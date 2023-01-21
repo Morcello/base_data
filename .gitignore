@@ -15,7 +15,7 @@
 
 # Ignore all logfiles and tempfiles.
 /log/*
-!/log/
+/log
 /tmp
 .byebug_history
 .irb_history
