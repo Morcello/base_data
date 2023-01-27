@@ -1,0 +1,84 @@
+<h2>Creat owner</h2>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field_field :first_name, autocomplete: "first_name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field_field :last_name, autocomplete: "last_name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :middle_name %><br />
+    <%= f.text_field_field :middle_name, autocomplete: "middle_name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :personal_account %><br />
+    <%= f.text_field_field :personal_account, autocomplete: "personal_account" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :city %><br />
+    <%= f.text_field_field :city, autocomplete: "city" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :street %><br />
+    <%= f.text_field_field :street, autocomplete: "street" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :house_no %><br />
+    <%= f.text_field_field :house_no, autocomplete: "house_no" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :apartment_no %><br />
+    <%= f.text_field_field :apartment_no, autocomplete: "apartment_no" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :number_owners %><br />
+    <%= f.text_field_field :number_owners, autocomplete: "number_owners" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :phone %><br />
+    <%= f.text_field_field :phone, autocomplete: "phone" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :home_activation_date %><br />
+    <%= f.text_field_field :home_activation_date, autocomplete: "home_activation_date" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :subscriber_blocking_date %><br />
+    <%= f.text_field_field :subscriber_blocking_date, autocomplete: "subscriber_blocking_date" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :serial_number %><br />
+    <%= f.text_field_field :serial_number, autocomplete: "serial_number" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :contractor %><br />
+    <%= f.text_field_field :contractor, autocomplete: "contractor" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Add" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
