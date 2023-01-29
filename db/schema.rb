@@ -10,9 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_27_155202) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_29_151202) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "access_registrys", force: :cascade do |t|
+    t.string "login", default: "", null: false
+    t.string "password", default: "", null: false
+    t.datetime "date_application", null: false
+    t.datetime "date_issue", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "register_of_owners_id", null: false
+    t.index ["password"], name: "index_access_registrys_on_password", unique: true
+    t.index ["register_of_owners_id"], name: "index_access_registrys_on_register_of_owners_id"
+  end
 
   create_table "register_of_owners", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -50,4 +62,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_27_155202) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "access_registrys", "register_of_owners", column: "register_of_owners_id"
 end
