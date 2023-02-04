@@ -1,6 +1,6 @@
 <h2>РЕЕСТР СОБСТВЕННИКОВ</h2>
 
-<%= form_with model: @register_of_owner do |f| %>
+<%= form_for @register_of_owner do |f| %>
   <div class="field">
     <%= f.label "Имя" %><br />
     <%= f.text_field :first_name, autocomplete: "first_name" %>

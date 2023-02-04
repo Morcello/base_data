@@ -3,6 +3,11 @@ class RegisterOfOwnersController < ApplicationController
   end
 
   def new
+    @register_of_owner = RegisterOfOwner.new
+  end
+
+  def create
+
   end
 
   def show
@@ -12,5 +17,12 @@ class RegisterOfOwnersController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+
+  def register_of_owner_params
+    params.require(:register_of_owner).permit(:first_name, :last_name)
+
   end
 end
