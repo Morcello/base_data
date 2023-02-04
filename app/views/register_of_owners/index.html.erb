@@ -1,1 +1,11 @@
 <%= link_to 'Создать заявителя', new_register_of_owner_path %>
+
+<h1>Создать заявителя</h1>
+
+<ul>
+  <% @register_of_owners.each do |a| %>
+    <li>
+      <%= a.title %>
+    </li>
+  <% end %>
+</ul>
