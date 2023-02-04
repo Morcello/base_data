@@ -2,8 +2,7 @@ class RegisterOfOwnersController < ApplicationController
   def index
   end
 
-  def create
-    
+  def new
   end
 
   def show

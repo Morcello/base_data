@@ -1,4 +1,4 @@
-<h2>Creat owner</h2>
+<h2>РЕЕСТР СОБСТВЕННИКОВ</h2>
 
 <%= form_with model: @register_of_owner do |f| %>
   <div class="field">
@@ -17,37 +17,37 @@
   </div>
 
   <div class="field">
-    <%= f.label :personal_account %><br />
+    <%= f.label "Лицевой счет" %><br />
     <%= f.text_field :personal_account, autocomplete: "personal_account" %>
   </div>
 
   <div class="field">
-    <%= f.label :city %><br />
+    <%= f.label "Город" %><br />
     <%= f.text_field :city, autocomplete: "city" %>
   </div>
 
   <div class="field">
-    <%= f.label :street %><br />
+    <%= f.label "Улица" %><br />
     <%= f.text_field :street, autocomplete: "street" %>
   </div>
 
   <div class="field">
-    <%= f.label :house_no %><br />
+    <%= f.label "Дом №" %><br />
     <%= f.text_field :house_no, autocomplete: "house_no" %>
   </div>
 
   <div class="field">
-    <%= f.label :apartment_no %><br />
+    <%= f.label "Квартира №" %><br />
     <%= f.text_field :apartment_no, autocomplete: "apartment_no" %>
   </div>
 
   <div class="field">
-    <%= f.label :number_owners %><br />
+    <%= f.label "Кол-во собственников" %><br />
     <%= f.text_field :number_owners, autocomplete: "number_owners" %>
   </div>
 
   <div class="field">
-    <%= f.label :phone %><br />
+    <%= f.label "Телефон" %><br />
     <%= f.text_field :phone, autocomplete: "phone" %>
   </div>
 
@@ -57,26 +57,26 @@
   </div>
 
   <div class="field">
-    <%= f.label :home_activation_date %><br />
+    <%= f.label "Дата активации дома" %><br />
     <%= f.text_field :home_activation_date, autocomplete: "home_activation_date" %>
   </div>
 
   <div class="field">
-    <%= f.label :subscriber_blocking_date %><br />
+    <%= f.label "Дата блокировки абонента" %><br />
     <%= f.text_field :subscriber_blocking_date, autocomplete: "subscriber_blocking_date" %>
   </div>
 
   <div class="field">
-    <%= f.label :serial_number %><br />
+    <%= f.label "Серийный №" %><br />
     <%= f.text_field :serial_number, autocomplete: "serial_number" %>
   </div>
 
   <div class="field">
-    <%= f.label :contractor %><br />
+    <%= f.label "Подрядчик" %><br />
     <%= f.text_field :contractor, autocomplete: "contractor" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Add" %>
+    <%= f.submit "add" %>
   </div>
 <% end %>
