@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_03_151202) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_05_141012) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -21,7 +21,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_03_151202) do
     t.datetime "date_issue", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "register_of_owners_id", null: false
+    t.bigint "register_of_owners_id"
     t.index ["password"], name: "index_access_registrys_on_password", unique: true
     t.index ["register_of_owners_id"], name: "index_access_registrys_on_register_of_owners_id"
   end

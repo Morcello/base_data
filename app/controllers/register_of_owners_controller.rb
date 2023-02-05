@@ -9,8 +9,8 @@ class RegisterOfOwnersController < ApplicationController
 
   def create
     @register_of_owner = RegisterOfOwner.new(register_of_owner_params)
-    if @register_of_owner.save
-      redirect_to @register_of_owners
+    if @register_of_owner.save!
+      redirect_to action: "index"
     else
       render :new, status: :unprocessable_entity
     end

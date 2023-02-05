@@ -1,11 +1,23 @@
 <%= link_to 'Создать заявителя', new_register_of_owner_path %>
 
-<h1>Создать заявителя</h1>
+<h1>Список заявителей</h1>
 
-<ul>
-  <% @register_of_owners.each do |a| %>
-    <li>
-      <%= a.title %>
-    </li>
-  <% end %>
-</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Email</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @register_of_owners.each do |owner| %>
+      <tr>
+        <td><%= owner.id %></td>
+        <td><%= owner.email %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
