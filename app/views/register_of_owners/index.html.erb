@@ -2,12 +2,23 @@
 
 <h1>Список заявителей</h1>
 
-
 <table>
   <thead>
     <tr>
       <th>ID</th>
       <th>Email</th>
+      <th>Имя</th>
+      <th>Фамилия</th>
+      <th>Отчество</th>
+      <th>Город</th>
+      <th>Улица</th>
+      <th>Дом №</th>
+      <th>Квартира №</th>
+      <th>Телефон</th>
+      <th>Дата активации дома</th>
+      <th>Дата блокировки абонента</th>
+      <th>Серийный №</th>
+      <th>Подрядчик</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -17,6 +28,22 @@
       <tr>
         <td><%= owner.id %></td>
         <td><%= owner.email %></td>
+        <td><%= owner.first_name %></td>
+        <td><%= owner.last_name %></td>
+        <td><%= owner.middle_name %></td>
+        <td><%= owner.city %></td>
+        <td><%= owner.street %></td>
+        <td><%= owner.house_no %></td>
+        <td><%= owner.apartment_no %></td>
+        <td><%= owner.number_owners %></td>
+        <td><%= owner.phone %></td>
+        <td><%= owner.home_activation_date %></td>
+        <td><%= owner.serial_number %></td>
+        <td><%= owner.contractor %></td>
+        <td>
+            <%= link_to 'Редактировать', class: 'btn btn-outline-primary btn-sm' %>
+            <%= link_to 'Удалить',method: :delete, data: { confirm: "Вы уверены?" }, class: 'btn btn-outline-danger btn-sm' %>
+        </td>
       </tr>
     <% end %>
   </tbody>

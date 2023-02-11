@@ -22,10 +22,17 @@ class RegisterOfOwnersController < ApplicationController
 
   def update
     @register_of_owner = RegisterOfOwner.find(params[:id])
+    # if @register_of_owner.update(register_of_owner_params)
+    #   redirect_to action: "index"
+    # else
+    #   render :new
+    # end
   end
 
   def destroy
     @register_of_owner = RegisterOfOwner.find(params[:id])
+    # @register_of_owner.destroy
+    # redirect_to register_of_owner_path
   end
 
   private

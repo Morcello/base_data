@@ -1,1 +1,32 @@
- <%= "ПРИВЕТ!!!" %>
+<%= link_to 'Выданные доступы', new_access_registrys_of_owner_path %>
+
+<h1>Список выданных доступов</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Login</th>
+      <th>Password</th>
+      <th>Дата поступления заявления</th>
+      <th>Дата выдачи</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @register_of_owners.each do |owner| %>
+      <tr>
+        <td><%= owner.id %></td>
+        <td><%= owner.login %></td>
+        <td><%= owner.password %></td>
+        <td><%= owner.date_application %></td>
+        <td><%= owner.date_issue %></td>
+        <td>
+            <%= link_to 'Редактировать', class: 'btn btn-outline-primary btn-sm' %>
+            <%= link_to 'Удалить',method: :delete, data: { confirm: "Вы уверены?" }, class: 'btn btn-outline-danger btn-sm' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
