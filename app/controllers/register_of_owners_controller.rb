@@ -1,4 +1,6 @@
 class RegisterOfOwnersController < ApplicationController
+  before_action :find_register_of_owner, only: %i[show edit update destroy]
+
   def index
     @register_of_owners = RegisterOfOwner.all
   end
@@ -17,11 +19,9 @@ class RegisterOfOwnersController < ApplicationController
   end
 
   def show
-    @register_of_owner = RegisterOfOwner.find(params[:id])
   end
 
   def update
-    @register_of_owner = RegisterOfOwner.find(params[:id])
     # if @register_of_owner.update(register_of_owner_params)
     #   redirect_to action: "index"
     # else
@@ -30,9 +30,11 @@ class RegisterOfOwnersController < ApplicationController
   end
 
   def destroy
-    @register_of_owner = RegisterOfOwner.find(params[:id])
-    # @register_of_owner.destroy
-    # redirect_to register_of_owner_path
+    if @register_of_owner.destroy
+      redirect_to action: "index"
+    else
+      render :index, status: :unprocessable_entity
+    end
   end
 
   private
@@ -41,5 +43,9 @@ class RegisterOfOwnersController < ApplicationController
     params.require(:register_of_owner).permit(:first_name, :last_name, :middle_name, :personal_account,:city, :street,
                                               :house_no, :apartment_no, :number_owners, :phone, :email, :home_activation_date,
                                               :subscriber_blocking_date, :serial_number, :contractor)
+  end
+
+  def find_register_of_owner
+    @register_of_owner = RegisterOfOwner.find(params[:id])
   end
 end
