@@ -22,11 +22,14 @@ class RegisterOfOwnersController < ApplicationController
   end
 
   def update
-    # if @register_of_owner.update(register_of_owner_params)
-    #   redirect_to action: "index"
-    # else
-    #   render :new
-    # end
+    if @register_of_owner.update(register_of_owner_params)
+      redirect_to action: "index"
+    else
+      render :edit
+    end
+  end
+
+  def edit
   end
 
   def destroy

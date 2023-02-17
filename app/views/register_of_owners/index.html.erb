@@ -41,7 +41,7 @@
         <td><%= owner.serial_number %></td>
         <td><%= owner.contractor %></td>
         <td>
-            <%= link_to 'Редактировать', class: 'btn btn-outline-primary btn-sm' %>
+            <%= link_to 'Редактировать', edit_register_of_owner_path(owner), class: 'btn btn-outline-primary btn-sm' %>
             <%= link_to 'Удалить', owner, data: { turbo_method: "delete", turbo_confirm: "Вы уверены?" }, class: 'btn btn-outline-danger btn-sm' %>
         </td>
       </tr>
