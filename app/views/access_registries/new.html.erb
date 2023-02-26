@@ -1,6 +1,13 @@
-<h2>РЕЕСТР ВЫДАННЫХ ДОСТУПОВ</h2>
+<h2>Создать/Выдать доступ</h2>
 
-<%= form_with model: @access_registrys do |f| %>
+<%= form_with model: @access_registries do |f| %>
+  <div class="span6">
+    <form>
+      <h4>Выбор собственника<h4>
+      <%= f.select :register_of_owner_id, RegisterOfOwner.order(:personal_account).map { |owner|  ["#{owner.personal_account}, #{owner.last_name},  #{owner.middle_name}"]  } %>
+    </form>
+  </div>
+
   <div class="field">
     <%= f.label "Login" %><br />
     <%= f.text_field :login, autocomplete: "login" %>
@@ -21,8 +28,11 @@
     <%= f.date_select :date_issue, autocomplete: "date_issue" %>
   </div>
 
+  <div class="actions">
+    <%= f.submit "Добавить доступ" %>
+  </div>
 
   <div class="actions">
-    <%= f.submit "add" %>
+    <%= f.submit "назад" %>
   </div>
 <% end %>

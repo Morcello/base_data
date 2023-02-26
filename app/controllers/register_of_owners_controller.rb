@@ -43,7 +43,7 @@ class RegisterOfOwnersController < ApplicationController
   private
 
   def register_of_owner_params
-    params.require(:register_of_owner).permit(:first_name, :last_name, :middle_name, :personal_account,:city, :street,
+    params.require(:register_of_owner).permit(:first_name, :last_name, :middle_name, :personal_account, :city, :street,
                                               :house_no, :apartment_no, :number_owners, :phone, :email, :home_activation_date,
                                               :subscriber_blocking_date, :serial_number, :contractor)
   end

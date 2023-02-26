@@ -1,6 +1,13 @@
-<h2>ОТКАЗ ОТ УСЛУГИ</h2>
+<h2>Добавить отказника</h2>
 
-<%= form_with model: @register_of_owner do |f| %>
+<%= form_with model: @service_cancellations do |f| %>
+  <div class="span6">
+    <form>
+      <h4>Выбор собственника<h4>
+      <%= f.select :service_cancellation_id, RegisterOfOwner.order(:last_name).map { |owner_сancell|  ["#{owner_сancell.first_name}, #{owner_сancell.last_name},  #{owner_сancell.middle_name}"]  } %>
+    </form>
+  </div>
+
   <div class="field">
     <%= f.label "Имя" %><br />
     <%= f.text_field :first_name, autocomplete: "first_name" %>
@@ -22,6 +29,10 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "add" %>
+    <%= f.submit "добавить" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "назад" %>
   </div>
 <% end %>

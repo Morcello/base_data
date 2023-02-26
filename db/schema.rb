@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_05_141012) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_03_151202) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "access_registrys", force: :cascade do |t|
+  create_table "access_registries", force: :cascade do |t|
     t.string "login", default: "", null: false
     t.string "password", default: "", null: false
     t.datetime "date_application", null: false
@@ -22,8 +22,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_05_141012) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "register_of_owners_id"
-    t.index ["password"], name: "index_access_registrys_on_password", unique: true
-    t.index ["register_of_owners_id"], name: "index_access_registrys_on_register_of_owners_id"
+    t.index ["password"], name: "index_access_registries_on_password", unique: true
+    t.index ["register_of_owners_id"], name: "index_access_registries_on_register_of_owners_id"
   end
 
   create_table "register_of_owners", force: :cascade do |t|
@@ -76,6 +76,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_05_141012) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "access_registrys", "register_of_owners", column: "register_of_owners_id"
+  add_foreign_key "access_registries", "register_of_owners", column: "register_of_owners_id"
   add_foreign_key "service_cancellations", "register_of_owners", column: "register_of_owners_id"
 end

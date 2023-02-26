@@ -1,4 +1,4 @@
-<%= link_to 'Выданные доступы', new_access_registrys_of_owner_path %>
+<%= link_to 'Выдать доступ', new_access_registry_path %>
 
 <h1>Список выданных доступов</h1>
 
@@ -15,13 +15,13 @@
   </thead>
 
   <tbody>
-    <% @register_of_owners.each do |owner| %>
+    <% @access_registries.each do |registry| %>
       <tr>
-        <td><%= owner.id %></td>
-        <td><%= owner.login %></td>
-        <td><%= owner.password %></td>
-        <td><%= owner.date_application %></td>
-        <td><%= owner.date_issue %></td>
+        <td><%= registry.id %></td>
+        <td><%= registry.login %></td>
+        <td><%= registry.password %></td>
+        <td><%= registry.date_application %></td>
+        <td><%= registry.date_issue %></td>
         <td>
             <%= link_to 'Редактировать', class: 'btn btn-outline-primary btn-sm' %>
             <%= link_to 'Удалить',method: :delete, data: { confirm: "Вы уверены?" }, class: 'btn btn-outline-danger btn-sm' %>

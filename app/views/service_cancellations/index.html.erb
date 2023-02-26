@@ -1,4 +1,4 @@
-<%= link_to 'Отказ от услуги', new_servise_cancellations_path %>
+<%= link_to 'Отказ от услуги', new_service_cancellation_path %>
 
 <h1>Список отказавшихся от услкуги</h1>
 
@@ -15,16 +15,15 @@
   </thead>
 
   <tbody>
-    <% @register_of_owners.each do |owner| %>
+    <% @service_cancellations.each do |cancell| %>
       <tr>
-        <td><%= owner.id %></td>
-        <td><%= owner.first_name %></td>
-        <td><%= owner.last_name %></td>
-        <td><%= owner.middle_name %></td>
-        <td><%= owner.date_rejection %></td>
+        <td><%= cancell.id %></td>
+        <td><%= cancell.first_name %></td>
+        <td><%= cancell.last_name %></td>
+        <td><%= cancell.middle_name %></td>
+        <td><%= cancell.date_rejection %></td>
         <td>
             <%= link_to 'Редактировать', class: 'btn btn-outline-primary btn-sm' %>
-            <%= link_to 'Удалить',method: :delete, data: { confirm: "Вы уверены?" }, class: 'btn btn-outline-danger btn-sm' %>
         </td>
       </tr>
     <% end %>
