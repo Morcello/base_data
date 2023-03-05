@@ -1,11 +1,6 @@
-<h2>Добавить отказника</h2>
+<h2>Редактирование информации</h2>
 
 <%= form_for @service_cancellation do |f| %>
-  <div class="span6">
-    <h4>Выбор собственника<h4>
-    <%= f.select :register_of_owners_id, RegisterOfOwner.all.collect { |owner|  ["#{owner.id}, #{owner.first_name}, #{owner.last_name},  #{owner.middle_name}"]  } %>
-  </div>
-
   <div class="field">
     <%= f.label "Имя" %><br />
     <%= f.text_field :first_name, autocomplete: "first_name" %>
@@ -27,6 +22,10 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "добавить отказника" %>
+    <%= f.submit "Изменить" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Назад" %>
   </div>
 <% end %>

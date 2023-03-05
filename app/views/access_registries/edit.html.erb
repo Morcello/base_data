@@ -1,11 +1,6 @@
-<h2>Создать/Выдать доступ</h2>
+<h2>РЕДАКТИРОВАНИЕ ПОЛЕЙ</h2>
 
-<%= form_for @access_registrу do |f| %>
-  <div class="span6">
-    <h4>Выбор собственника<h4>
-    <%= f.select :register_of_owners_id, RegisterOfOwner.all.collect { |owner|  ["#{owner.id}, #{owner.last_name},  #{owner.middle_name}"]  } %>
-  </div>
-
+<%= form_for @access_registrу  do |f| %>
   <div class="field">
     <%= f.label "Login" %><br />
     <%= f.text_field :login, autocomplete: "login" %>
@@ -27,6 +22,10 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Создать доступ" %>
+    <%= f.submit "Изменить" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Назад" %>
   </div>
 <% end %>

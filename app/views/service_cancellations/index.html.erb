@@ -23,7 +23,8 @@
         <td><%= cancell.middle_name %></td>
         <td><%= cancell.date_rejection %></td>
         <td>
-            <%= link_to 'Редактировать', class: 'btn btn-outline-primary btn-sm' %>
+            <%= link_to 'Редактировать', edit_service_cancellation_path(cancell), class: 'btn btn-outline-primary btn-sm' %>
+            <%= link_to 'Удалить', cancell, data: { turbo_method: "delete", turbo_confirm: "Вы уверены?" }, class: 'btn btn-outline-danger btn-sm' %>
         </td>
       </tr>
     <% end %>

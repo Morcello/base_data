@@ -23,8 +23,8 @@
         <td><%= registry.date_application %></td>
         <td><%= registry.date_issue %></td>
         <td>
-            <%= link_to 'Редактировать', class: 'btn btn-outline-primary btn-sm' %>
-            <%= link_to 'Удалить',method: :delete, data: { confirm: "Вы уверены?" }, class: 'btn btn-outline-danger btn-sm' %>
+          <%= link_to 'Редактировать', edit_access_registry_path(registry), class: 'btn btn-outline-primary btn-sm' %>
+          <%= link_to 'Удалить', registry, data: { turbo_method: "delete", turbo_confirm: "Вы уверены?" }, class: 'btn btn-outline-danger btn-sm' %>
         </td>
       </tr>
     <% end %>

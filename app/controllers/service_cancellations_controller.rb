@@ -7,7 +7,7 @@ class ServiceCancellationsController < ApplicationController
   end
 
   def new
-   @service_cancellation = ServiceCancellation.all
+   @service_cancellation = ServiceCancellation.new
   end
 
   def create
@@ -23,15 +23,31 @@ class ServiceCancellationsController < ApplicationController
   end
 
   def update
+    if @service_cancellation.update(service_cancellation_params)
+      redirect_to action: "index"
+    else
+      render :edit
+    end
+  end
+
+  def edit
+  end
+
+  def destroy
+    if @service_cancellation.destroy
+      redirect_to action: "index"
+    else
+      render :index, status: :unprocessable_entity
+    end
   end
 
   private
 
   def service_cancellation_params
-    params.require(:service_cancellation).permit(:service_cancellation_id, :first_name, :last_name, :middle_name, :date_rejection)
+    params.require(:service_cancellation).permit(:register_of_owners_id, :first_name, :last_name, :middle_name, :date_rejection)
   end
 
   def find_service_cancellation
-    @service_cancellations = ServiceCancellation.find(params[:id])
+    @service_cancellation = ServiceCancellation.find(params[:id])
   end
 end
