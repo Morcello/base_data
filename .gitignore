@@ -56,3 +56,6 @@ yarn-debug.log*
 coverage/
 
 lib/sources
+
+/app/assets/builds/*
+!/app/assets/builds/.keep
