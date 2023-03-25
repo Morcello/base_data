@@ -51,6 +51,8 @@ gem "bootsnap", require: false
 # Use for authentication
 gem "devise", "~> 4.8.1"
 
+gem 'bootstrap', '~> 5.2.2'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
@@ -60,6 +62,7 @@ group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
   gem "byebug"
+  gem 'jquery-rails'
 end
 
 group :test do
