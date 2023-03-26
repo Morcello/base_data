@@ -1,32 +1,34 @@
-<h2>Создать/Выдать доступ</h2>
+<article @class="post">
+  <h2>Создать/Выдать доступ</h2>
 
-<%= form_for @access_registrу do |f| %>
-  <div class="span6">
-    <h4>Выбор собственника<h4>
-    <%= f.select :register_of_owners_id, RegisterOfOwner.all.collect { |owner|  ["#{owner.id}, #{owner.last_name},  #{owner.middle_name}"]  } %>
-  </div>
+  <%= form_for @access_registrу do |f| %>
+    <div class="span6">
+      <h4>Выбор собственника<h4>
+      <%= f.select :register_of_owners_id, RegisterOfOwner.all.collect { |owner|  ["#{owner.id}, #{owner.last_name},  #{owner.middle_name}"]  } %>
+    </div>
 
-  <div class="field">
-    <%= f.label "Login" %><br />
-    <%= f.text_field :login, autocomplete: "login" %>
-  </div>
+    <div class="field">
+      <%= f.label "Login" %><br />
+      <%= f.text_field :login, autocomplete: "login" %>
+    </div>
 
-  <div class="field">
-    <%= f.label "Password" %><br />
-    <%= f.text_field :password, autocomplete: "password" %>
-  </div>
+    <div class="field">
+      <%= f.label "Password" %><br />
+      <%= f.text_field :password, autocomplete: "password" %>
+    </div>
 
-  <div class="field">
-    <%= f.label "Дата поступления заявления" %><br />
-    <%= f.date_select :date_application, autocomplete: "date_application" %>
-  </div>
+    <div class="field">
+      <%= f.label "Дата поступления заявления" %><br />
+      <%= f.date_select :date_application, autocomplete: "date_application" %>
+    </div>
 
-  <div class="field">
-    <%= f.label "Дата выдачи" %><br />
-    <%= f.date_select :date_issue, autocomplete: "date_issue" %>
-  </div>
+    <div class="field">
+      <%= f.label "Дата выдачи" %><br />
+      <%= f.date_select :date_issue, autocomplete: "date_issue" %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Создать доступ" %>
-  </div>
-<% end %>
+    <div class="actions">
+      <%= f.submit "Создать доступ" %>
+    </div>
+  <% end %>
+</article>

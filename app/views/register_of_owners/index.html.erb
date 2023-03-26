@@ -1,50 +1,53 @@
-<%= link_to 'Создать заявителя', new_register_of_owner_path %>
+<article @class="post">
+  <sectio class="post-head">
+    <h1>Список заявителей</h1>
+    <small>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Email</th>
+            <th>Имя</th>
+            <th>Фамилия</th>
+            <th>Отчество</th>
+            <th>Город</th>
+            <th>Улица</th>
+            <th>Дом №</th>
+            <th>Квартира №</th>
+            <th>Телефон</th>
+            <th>Дата акт. дома</th>
+            <th>Дата блок. абонента</th>
+            <th>Серийный №</th>
+            <th>Подрядчик</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
 
-<h1>Список заявителей</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Email</th>
-      <th>Имя</th>
-      <th>Фамилия</th>
-      <th>Отчество</th>
-      <th>Город</th>
-      <th>Улица</th>
-      <th>Дом №</th>
-      <th>Квартира №</th>
-      <th>Телефон</th>
-      <th>Дата активации дома</th>
-      <th>Дата блокировки абонента</th>
-      <th>Серийный №</th>
-      <th>Подрядчик</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @register_of_owners.each do |owner| %>
-      <tr>
-        <td><%= owner.id %></td>
-        <td><%= owner.email %></td>
-        <td><%= owner.first_name %></td>
-        <td><%= owner.last_name %></td>
-        <td><%= owner.middle_name %></td>
-        <td><%= owner.city %></td>
-        <td><%= owner.street %></td>
-        <td><%= owner.house_no %></td>
-        <td><%= owner.apartment_no %></td>
-        <td><%= owner.number_owners %></td>
-        <td><%= owner.phone %></td>
-        <td><%= owner.home_activation_date %></td>
-        <td><%= owner.serial_number %></td>
-        <td><%= owner.contractor %></td>
-        <td>
-            <%= link_to 'Редактировать', edit_register_of_owner_path(owner), class: 'btn btn-outline-primary btn-sm' %>
-            <%= link_to 'Удалить', owner, data: { turbo_method: "delete", turbo_confirm: "Вы уверены?" }, class: 'btn btn-outline-danger btn-sm' %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        <tbody>
+          <% @register_of_owners.each do |owner| %>
+            <tr>
+              <td><%= owner.id %></td>
+              <td><%= owner.email %></td>
+              <td><%= owner.first_name %></td>
+              <td><%= owner.last_name %></td>
+              <td><%= owner.middle_name %></td>
+              <td><%= owner.city %></td>
+              <td><%= owner.street %></td>
+              <td><%= owner.house_no %></td>
+              <td><%= owner.apartment_no %></td>
+              <td><%= owner.number_owners %></td>
+              <td><%= owner.phone %></td>
+              <time><td><%= owner.created_at.to_date.strftime("%d %B, %Y") %></td></time>
+              <td><%= owner.serial_number %></td>
+              <td><%= owner.contractor %></td>
+              <td>
+                  <%= link_to 'Редактировать', edit_register_of_owner_path(owner), class: 'btn btn-outline-secondary' %>
+                  <%= link_to 'Удалить', owner, data: { turbo_method: "delete", turbo_confirm: "Вы уверены?" }, class: 'btn btn-outline-danger' %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </small>
+  </sectio>
+</article>

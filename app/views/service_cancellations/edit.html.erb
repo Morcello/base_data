@@ -1,31 +1,36 @@
-<h2>Редактирование информации</h2>
+<article @class="post">
+  <sectio class="post-head">
+    <h2>Редактирование информации</h2>
+    <small>
+      <%= form_for @service_cancellation do |f| %>
+        <div class="field">
+          <%= f.label "Имя" %><br />
+          <%= f.text_field :first_name, autocomplete: "first_name" %>
+        </div>
 
-<%= form_for @service_cancellation do |f| %>
-  <div class="field">
-    <%= f.label "Имя" %><br />
-    <%= f.text_field :first_name, autocomplete: "first_name" %>
-  </div>
+        <div class="field">
+          <%= f.label "Фамилия" %><br />
+          <%= f.text_field :last_name, autocomplete: "last_name" %>
+        </div>
 
-  <div class="field">
-    <%= f.label "Фамилия" %><br />
-    <%= f.text_field :last_name, autocomplete: "last_name" %>
-  </div>
+        <div class="field">
+          <%= f.label "Отчество" %><br />
+          <%= f.text_field :middle_name, autocomplete: "middle_name" %>
+        </div>
 
-  <div class="field">
-    <%= f.label "Отчество" %><br />
-    <%= f.text_field :middle_name, autocomplete: "middle_name" %>
-  </div>
+        <div class="field">
+          <%= f.label "Дата отказа" %><br />
+          <%= f.date_select :date_rejection, autocomplete: "date_rejection" %>
+        </div>
 
-  <div class="field">
-    <%= f.label "Дата отказа" %><br />
-    <%= f.date_select :date_rejection, autocomplete: "date_rejection" %>
-  </div>
+        <div class="actions">
+          <%= f.submit "Изменить" %>
+        </div>
 
-  <div class="actions">
-    <%= f.submit "Изменить" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Назад" %>
-  </div>
-<% end %>
+        <div class="actions">
+          <%= f.submit "Назад" %>
+        </div>
+      <% end %>
+    </small>
+  </sectio>
+</article>

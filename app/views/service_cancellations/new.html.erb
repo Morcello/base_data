@@ -1,32 +1,35 @@
-<h2>Добавить отказника</h2>
+<article @class="post">
+  <section class="post-head">
+    <h4>Добавить отказника</h4>
+  </section>
+  <small>
+    <%= form_for @service_cancellation do |f| %>
+      <h6>Выбор собственника<h6>
+      <%= f.select :register_of_owners_id, RegisterOfOwner.all.collect { |owner|  ["#{owner.id}, #{owner.first_name}, #{owner.last_name},  #{owner.middle_name}"]  } %>
 
-<%= form_for @service_cancellation do |f| %>
-  <div class="span6">
-    <h4>Выбор собственника<h4>
-    <%= f.select :register_of_owners_id, RegisterOfOwner.all.collect { |owner|  ["#{owner.id}, #{owner.first_name}, #{owner.last_name},  #{owner.middle_name}"]  } %>
-  </div>
+      <div class="field">
+        <%= f.label "Имя" %><br />
+        <%= f.text_field :first_name, autocomplete: "first_name" %>
+      </div>
 
-  <div class="field">
-    <%= f.label "Имя" %><br />
-    <%= f.text_field :first_name, autocomplete: "first_name" %>
-  </div>
+      <div class="field">
+        <%= f.label "Фамилия" %><br />
+        <%= f.text_field :last_name, autocomplete: "last_name" %>
+      </div>
 
-  <div class="field">
-    <%= f.label "Фамилия" %><br />
-    <%= f.text_field :last_name, autocomplete: "last_name" %>
-  </div>
+      <div class="field">
+        <%= f.label "Отчество" %><br />
+        <%= f.text_field :middle_name, autocomplete: "middle_name" %>
+      </div>
 
-  <div class="field">
-    <%= f.label "Отчество" %><br />
-    <%= f.text_field :middle_name, autocomplete: "middle_name" %>
-  </div>
+      <div class="field">
+        <%= f.label "Дата отказа" %><br />
+        <%= f.date_select :date_rejection, autocomplete: "date_rejection" %>
+      </div>
 
-  <div class="field">
-    <%= f.label "Дата отказа" %><br />
-    <%= f.date_select :date_rejection, autocomplete: "date_rejection" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "добавить отказника" %>
-  </div>
-<% end %>
+      <div class="actions">
+        <%= f.submit "добавить отказника" %>
+      </div>
+    <% end %>
+  </small>
+</article>

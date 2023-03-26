@@ -1,32 +1,41 @@
-<%= link_to 'Отказ от услуги', new_service_cancellation_path %>
+<article @class="post">
+  <section class="post-head">
+    <h2>Список отказавшихся от услкуги</h2>
+    <small>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Имя</th>
+            <th>Фамилия</th>
+            <th>Отчество</th>
+            <th>Дата отказа</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+      </table>
+    </small>
+  </section>
 
-<h1>Список отказавшихся от услкуги</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Имя</th>
-      <th>Фамилия</th>
-      <th>Отчество</th>
-      <th>Дата отказа</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @service_cancellations.each do |cancell| %>
-      <tr>
-        <td><%= cancell.id %></td>
-        <td><%= cancell.first_name %></td>
-        <td><%= cancell.last_name %></td>
-        <td><%= cancell.middle_name %></td>
-        <td><%= cancell.date_rejection %></td>
-        <td>
-            <%= link_to 'Редактировать', edit_service_cancellation_path(cancell), class: 'btn btn-outline-primary btn-sm' %>
-            <%= link_to 'Удалить', cancell, data: { turbo_method: "delete", turbo_confirm: "Вы уверены?" }, class: 'btn btn-outline-danger btn-sm' %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <section class="post-summary">
+    <small>
+      <table>
+        <tbody>
+          <% @service_cancellations.each do |cancell| %>
+            <tr>
+              <td><%= cancell.id %></td>
+              <td><%= cancell.first_name %></td>
+              <td><%= cancell.last_name %></td>
+              <td><%= cancell.middle_name %></td>
+              <time><td><%= cancell.created_at.to_date.strftime("%d %B, %Y") %></td></time>
+              <td>
+                  <%= link_to 'Ред.', edit_service_cancellation_path(cancell), class: 'btn btn-outline-secondary' %>
+                  <%= link_to 'Удалить', cancell, data: { turbo_method: "delete", turbo_confirm: "Вы уверены?" }, class: 'btn btn-outline-danger' %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </small>
+  </section>
+</article>

@@ -11,6 +11,40 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="https://olan-video.ru/">Olan-video</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="<%= new_access_registry_path %>">Реестор выданных доступов<span class="sr-only"></span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<%= new_register_of_owner_path %>">Реестр собственников</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<%= new_service_cancellation_path %>">Реестр отказников</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Дополнительные Рееестры
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="#">Реестр документов</a>
+                <a class="dropdown-item" href="#">Реестр Л/С</a>
+                <a class="dropdown-item" href="#">Реестр задолжностей</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <div class="container main">
+      <%= yield %>
+    </div>
   </body>
 </html>
