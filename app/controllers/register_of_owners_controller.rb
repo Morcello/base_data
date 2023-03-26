@@ -11,6 +11,7 @@ class RegisterOfOwnersController < ApplicationController
 
   def create
     @register_of_owner = RegisterOfOwner.new(register_of_owner_params)
+    @register_of_owner.scans.attach(params[:scans])
     if @register_of_owner.save!
       redirect_to action: "index"
     else
@@ -45,7 +46,7 @@ class RegisterOfOwnersController < ApplicationController
   def register_of_owner_params
     params.require(:register_of_owner).permit(:first_name, :last_name, :middle_name, :personal_account, :city, :street,
                                               :house_no, :apartment_no, :number_owners, :phone, :email, :home_activation_date,
-                                              :subscriber_blocking_date, :serial_number, :contractor)
+                                              :subscriber_blocking_date, :serial_number, :contractor, scans: [])
   end
 
   def find_register_of_owner

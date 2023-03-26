@@ -76,6 +76,11 @@
     <%= f.text_field :contractor, autocomplete: "contractor" %>
   </div>
 
+  <div class="field">
+    <%= f.label "Документы" %><br />
+    <%= f.file_field :scans %>
+  </div>
+
   <div class="actions">
     <%= f.submit "add" %>
   </div>
