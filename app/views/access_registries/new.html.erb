@@ -1,34 +1,54 @@
 <article @class="post">
-  <h2>Создать/Выдать доступ</h2>
+  <section class="post-head">
+    <h4>Создать/Выдать доступ</h4>
+  </section>
 
-  <%= form_for @access_registrу do |f| %>
-    <div class="span6">
-      <h4>Выбор собственника<h4>
-      <%= f.select :register_of_owners_id, RegisterOfOwner.all.collect { |owner|  ["#{owner.id}, #{owner.last_name},  #{owner.middle_name}"]  } %>
-    </div>
-
-    <div class="field">
-      <%= f.label "Login" %><br />
-      <%= f.text_field :login, autocomplete: "login" %>
-    </div>
-
-    <div class="field">
-      <%= f.label "Password" %><br />
-      <%= f.text_field :password, autocomplete: "password" %>
-    </div>
-
-    <div class="field">
-      <%= f.label "Дата поступления заявления" %><br />
-      <%= f.date_select :date_application, autocomplete: "date_application" %>
-    </div>
-
-    <div class="field">
-      <%= f.label "Дата выдачи" %><br />
-      <%= f.date_select :date_issue, autocomplete: "date_issue" %>
-    </div>
-
-    <div class="actions">
-      <%= f.submit "Создать доступ" %>
+  <% if @access_registrу.errors.any? %>
+    <div class="mt">
+      <% @access_registrу.full_messages.each do |message| %>
+        <p class="mb-sm text-red"><%= message %></p>
+      <% end %>
     </div>
   <% end %>
+
+  <section class="post-summary">
+    <small>
+      <table>
+        <tbody>
+          <%= form_for @access_registrу do |f| %>
+            <div class="span6">
+              <h6>Выбор собственника<h6>
+              <%= f.select :register_of_owners_id, RegisterOfOwner.all.collect { |owner|  ["#{owner.id}, #{owner.last_name},  #{owner.middle_name}"]  } %>
+            </div>
+
+            <div class="field">
+              <%= f.label "Login" %><br />
+              <%= f.text_field :login, autocomplete: "login" %>
+            </div>
+
+            <div class="field">
+              <%= f.label "Password" %><br />
+              <%= f.text_field :password, autocomplete: "password" %>
+            </div>
+
+            <div class="field">
+              <%= f.label "Дата поступления заявления" %><br />
+              <%= f.date_select :date_application, autocomplete: "date_application" %>
+            </div>
+
+            <div class="field">
+              <%= f.label "Дата выдачи" %><br />
+              <%= f.date_select :date_issue, autocomplete: "date_issue" %>
+            </div>
+
+            <p class="mb-sm text-red">
+              <div class="actions">
+                <%= f.submit "Создать доступ", class: 'btn btn-light'%>
+              </div>
+            </p>
+          <% end %>
+        </tbody>
+      </table>
+    </small>
+  </section>
 </article>

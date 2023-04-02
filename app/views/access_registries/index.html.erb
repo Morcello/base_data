@@ -1,4 +1,4 @@
-<h1>Список выданных доступов</h1>
+<h4>Список выданных доступов</h4>
 
 <table>
   <thead>
@@ -6,7 +6,7 @@
       <th>ID</th>
       <th>Login</th>
       <th>Password</th>
-      <th>Дата поступления заявления</th>
+      <th>Дата поступления</th>
       <th>Дата выдачи</th>
       <th colspan="3"></th>
     </tr>
@@ -18,8 +18,8 @@
         <td><%= registry.id %></td>
         <td><%= registry.login %></td>
         <td><%= registry.password %></td>
-        <td><%= registry.date_application %></td>
-        <td><%= registry.date_issue %></td>
+        <td><%= registry.date_application.to_date.strftime("%d.%m.%y") %></td>
+        <td><%= registry.date_issue.to_date.strftime("%d.%m.%y") %></td>
         <td>
           <%= link_to 'Редактировать', edit_access_registry_path(registry), class: 'btn btn-outline-primary btn-sm' %>
           <%= link_to 'Удалить', registry, data: { turbo_method: "delete", turbo_confirm: "Вы уверены?" }, class: 'btn btn-outline-danger btn-sm' %>

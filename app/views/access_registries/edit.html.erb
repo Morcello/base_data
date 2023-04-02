@@ -1,31 +1,45 @@
-<h2>РЕДАКТИРОВАНИЕ ПОЛЕЙ</h2>
+<section class="post-head">
+  <h4>РЕДАКТИРОВАНИЕ ПОЛЕЙ</h4>
+</section>
 
-<%= form_for @access_registrу  do |f| %>
-  <div class="field">
-    <%= f.label "Login" %><br />
-    <%= f.text_field :login, autocomplete: "login" %>
-  </div>
+<section class="post-summary">
+  <small>
+    <table>
+      <tbody>
+        <%= form_for @access_registrу  do |f| %>
+          <div class="field">
+            <%= f.label "Login" %><br />
+            <%= f.text_field :login, autocomplete: "login" %>
+          </div>
 
-  <div class="field">
-    <%= f.label "Password" %><br />
-    <%= f.text_field :password, autocomplete: "password" %>
-  </div>
+          <div class="field">
+            <%= f.label "Password" %><br />
+            <%= f.text_field :password, autocomplete: "password" %>
+          </div>
 
-  <div class="field">
-    <%= f.label "Дата поступления заявления" %><br />
-    <%= f.date_select :date_application, autocomplete: "date_application" %>
-  </div>
+          <div class="field">
+            <%= f.label "Дата поступления заявления" %><br />
+            <%= f.date_select :date_application, autocomplete: "date_application" %>
+          </div>
 
-  <div class="field">
-    <%= f.label "Дата выдачи" %><br />
-    <%= f.date_select :date_issue, autocomplete: "date_issue" %>
-  </div>
+          <div class="field">
+            <%= f.label "Дата выдачи" %><br />
+            <%= f.date_select :date_issue, autocomplete: "date_issue" %>
+          </div>
 
-  <div class="actions">
-    <%= f.submit "Изменить" %>
-  </div>
+          <p class="mb-sm text-red">
+            <div class="actions">
+              <%= f.submit "Изменить", class: 'btn btn-light' %>
+            </div>
+          </p>
 
-  <div class="actions">
-    <%= f.submit "Назад" %>
-  </div>
-<% end %>
+          <p class="mb-sm text-red">
+            <div class="actions">
+              <%= f.submit "Назад", class: 'btn btn-light' %>
+            </div>
+          </p>
+        <% end %>
+      </tbody>
+    </table>
+  </small>
+</section>

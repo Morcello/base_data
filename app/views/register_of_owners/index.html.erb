@@ -12,14 +12,15 @@
             <th>Отчество</th>
             <th>Город</th>
             <th>Улица</th>
-            <th>Дом №</th>
-            <th>Квартира №</th>
+            <th>Д. №</th>
+            <th>Кв. №</th>
+            <th>Кол-во соб.</th>
             <th>Телефон</th>
-            <th>Дата акт. дома</th>
+            <th>Дата актив. дома</th>
             <th>Дата блок. абонента</th>
             <th>Серийный №</th>
-            <th>Подрядчик</th>
-            <th>Документы</th>
+            <th>Под-к.</th>
+            <th>Скан док.</th>
             <th colspan="3"></th>
           </tr>
         </thead>
@@ -38,7 +39,8 @@
               <td><%= owner.apartment_no %></td>
               <td><%= owner.number_owners %></td>
               <td><%= owner.phone %></td>
-              <time><td><%= owner.created_at.to_date.strftime("%d %B, %Y") %></td></time>
+              <time><td><%= owner.subscriber_blocking_date.to_date.strftime("%d.%m.%y") %></td></time>
+              <time><td><%= owner.home_activation_date.to_date.strftime("%d.%m.%y") %></td></time>
               <td><%= owner.serial_number %></td>
               <td><%= owner.contractor %></td>
               <td><%= owner.scans.each do |scan|
