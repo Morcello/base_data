@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_26_125332) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_05_195202) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -52,6 +52,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_26_125332) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "register_of_documents", force: :cascade do |t|
+    t.string "city", default: "", null: false
+    t.string "street", default: "", null: false
+    t.string "house_no", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["city"], name: "index_register_of_documents_on_city"
+    t.index ["house_no"], name: "index_register_of_documents_on_house_no"
+    t.index ["street"], name: "index_register_of_documents_on_street"
   end
 
   create_table "register_of_owners", force: :cascade do |t|

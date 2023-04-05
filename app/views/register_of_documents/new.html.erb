@@ -1,0 +1,36 @@
+<article @class="post">
+  <section class="post-head">
+    <h4>Добавить адре дома</h4>
+  </section>
+
+  <section class="post-summary">
+    <small>
+      <table>
+        <tbody>
+          <%= form_for @register_of_document do |f| %>
+            <div class="field">
+              <%= f.label "Город" %><br />
+              <%= f.text_field :city, autocomplete: "city" %>
+            </div>
+
+            <div class="field">
+              <%= f.label "Улица" %><br />
+              <%= f.text_field :street, autocomplete: "street" %>
+            </div>
+
+            <div class="field">
+              <%= f.label "Дои №" %><br />
+              <%= f.text_field :house_no, autocomplete: "house_no" %>
+            </div>
+
+            <p class="mb-sm text-red">
+              <div class="actions">
+                <%= f.submit "добавить адрес" %>
+              </div>
+            </p>
+          <% end %>
+        </tbody>
+      </table>
+    </small>
+  </section>
+</article>

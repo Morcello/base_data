@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :register_of_owners
   resources :access_registries
   resources :service_cancellations
+  resources :register_of_documents
 end
