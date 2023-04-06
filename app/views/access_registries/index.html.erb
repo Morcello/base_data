@@ -1,28 +1,32 @@
-<h4>Список выданных доступов</h4>
-
-<table>
+<table class="table caption-top">
+  <caption>Список выданных доступов</caption>
   <thead>
     <tr>
-      <th>ID</th>
-      <th>Login</th>
-      <th>Password</th>
-      <th>Дата поступления</th>
-      <th>Дата выдачи</th>
-      <th colspan="3"></th>
+      <th scope="col">ID</th>
+      <th scope="col">Login</th>
+      <th scope="col">Password</th>
+      <th scope="col">Дата поступления</th>
+      <th scope="col">Дата выдачи</th>
+      <th scope="col">Действие</th>
     </tr>
   </thead>
-
   <tbody>
     <% @access_registries.each do |registry| %>
       <tr>
-        <td><%= registry.id %></td>
+        <th scope="row"><%= registry.id %></th>
         <td><%= registry.login %></td>
         <td><%= registry.password %></td>
         <td><%= registry.date_application.to_date.strftime("%d.%m.%y") %></td>
         <td><%= registry.date_issue.to_date.strftime("%d.%m.%y") %></td>
         <td>
-          <%= link_to 'Редактировать', edit_access_registry_path(registry), class: 'btn btn-outline-primary btn-sm' %>
-          <%= link_to 'Удалить', registry, data: { turbo_method: "delete", turbo_confirm: "Вы уверены?" }, class: 'btn btn-outline-danger btn-sm' %>
+          <div class="btn-group btn-group-justified" role="group">
+            <div class="btn-group" role="group">
+              <button type="button" class="btn btn-default"><%= link_to 'Ред.', edit_access_registry_path(registry), class: 'btn btn-info' %></button>
+            </div>
+            <div class="btn-group" role="group">
+              <button type="button" class="btn btn-default"><%= link_to 'Удалить', registry, data: { turbo_method: "delete", turbo_confirm: "Вы уверены?" }, class: 'btn btn-outline-danger' %></button>
+            </div>
+          </div>
         </td>
       </tr>
     <% end %>

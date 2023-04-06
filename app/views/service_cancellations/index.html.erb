@@ -1,41 +1,34 @@
-<article @class="post">
-  <section class="post-head">
-    <h2>Список отказавшихся от услкуги</h2>
-    <small>
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Имя</th>
-            <th>Фамилия</th>
-            <th>Отчество</th>
-            <th>Дата отказа</th>
-            <th colspan="3"></th>
-          </tr>
-        </thead>
-      </table>
-    </small>
-  </section>
-
-  <section class="post-summary">
-    <small>
-      <table>
-        <tbody>
-          <% @service_cancellations.each do |cancell| %>
-            <tr>
-              <td><%= cancell.id %></td>
-              <td><%= cancell.first_name %></td>
-              <td><%= cancell.last_name %></td>
-              <td><%= cancell.middle_name %></td>
-              <time><td><%= cancell.created_at.to_date.strftime("%d %B, %Y") %></td></time>
-              <td>
-                  <%= link_to 'Ред.', edit_service_cancellation_path(cancell), class: 'btn btn-outline-secondary' %>
-                  <%= link_to 'Удалить', cancell, data: { turbo_method: "delete", turbo_confirm: "Вы уверены?" }, class: 'btn btn-outline-danger' %>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </small>
-  </section>
-</article>
+<table class="table caption-top">
+  <caption>Список отказавшихся от услкуги</caption>
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Имя</th>
+      <th scope="col">Фамилия</th>
+      <th scope="col">Отчество</th>
+      <th scope="col">Дата отказа</th>
+      <th scope="col">Действие</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @service_cancellations.each do |cancell| %>
+      <tr>
+        <th scope="row"><%= cancell.id %></th>
+        <td><%= cancell.first_name %></td>
+        <td><%= cancell.last_name %></td>
+        <td><%= cancell.middle_name %></td>
+        <time><td><%= cancell.created_at.to_date.strftime("%d.%m.%y") %></td></time>
+        <td>
+          <div class="btn-group btn-group-justified" role="group">
+            <div class="btn-group" role="group">
+              <button type="button" class="btn btn-default"><%= link_to 'Ред.', edit_service_cancellation_path(cancell), class: 'btn btn-info' %></button>
+            </div>
+            <div class="btn-group" role="group">
+              <button type="button" class="btn btn-default"><%= link_to 'Удалить', cancell, data: { turbo_method: "delete", turbo_confirm: "Вы уверены?" }, class: 'btn btn-outline-danger' %></button>
+            </div>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
