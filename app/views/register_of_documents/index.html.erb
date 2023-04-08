@@ -6,6 +6,7 @@
       <th scope="col">Город</th>
       <th scope="col">Улица</th>
       <th scope="col">Дом №</th>
+      <th scope="col">Сканы</th>
       <th scope="col">Действие</th>
     </tr>
   </thead>
@@ -16,6 +17,12 @@
         <td><%= doc.city %></td>
         <td><%= doc.street %></td>
         <td><%= doc.house_no %></td>
+        <td><%= doc.datascans.each do |scan|
+              if scan.representable?
+                image_tag scan.representation(resize_to_limit: [100, 100])
+              end
+            end%>
+        </td>
         <td>
           <div class="btn-group btn-group-justified" role="group">
             <div class="btn-group" role="group">

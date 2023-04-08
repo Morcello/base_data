@@ -11,19 +11,21 @@
             <h6>Выбор собственника<h6>
             <%= f.select :register_of_owners_id, RegisterOfOwner.all.collect { |owner|  ["#{owner.id}, #{owner.first_name}, #{owner.last_name},  #{owner.middle_name}"]  } %>
 
-            <div class="field">
-              <%= f.label "Имя" %><br />
-              <%= f.text_field :first_name, autocomplete: "first_name" %>
-            </div>
+            <div class="row g-3">
+              <div class="col">
+                <label for="inputEmail4" class="form-label">Имя</label>
+                <input type="text" class="form-control" placeholder="Имя" <%= f.text_field :first_name, autocomplete: "first_name" %></input>
+              </div>
 
-            <div class="field">
-              <%= f.label "Фамилия" %><br />
-              <%= f.text_field :last_name, autocomplete: "last_name" %>
-            </div>
+              <div class="col">
+                <label for="inputEmail4" class="form-label">Фамилия</label>
+                <input type="text" class="form-control" placeholder="Фамилия" <%= f.text_field :last_name, autocomplete: "last_name" %></input>
+              </div>
 
-            <div class="field">
-              <%= f.label "Отчество" %><br />
-              <%= f.text_field :middle_name, autocomplete: "middle_name" %>
+              <div class="col">
+                <label for="inputEmail4" class="form-label">Отчество</label>
+                <input type="text" class="form-control" placeholder="Отчество" <%= f.text_field :middle_name, autocomplete: "middle_name" %></input>
+              </div>
             </div>
 
             <div class="field">
@@ -33,7 +35,7 @@
 
             <p class="mb-sm text-red">
               <div class="actions">
-                <%= f.submit "добавить отказника" %>
+                <%= f.submit "добавить отказника", class: 'btn btn-light' %>
               </div>
             </p>
           <% end %>

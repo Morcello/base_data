@@ -4,10 +4,10 @@
     <thead>
       <tr>
         <th scope="col">ID</th>
-        <th scope="col">Email</th>
         <th scope="col">Имя</th>
         <th scope="col">Фамилия</th>
         <th scope="col">Отчество</th>
+        <th scope="col">Email</th>
         <th scope="col">Город</th>
         <th scope="col">Улица</th>
         <th scope="col">Д.№</th>
@@ -28,10 +28,10 @@
       <% @register_of_owners.each do |owner| %>
         <tr>
           <th scope="row"><%= owner.id %></th>
-          <td><%= owner.email %></td>
           <td><%= owner.first_name %></td>
           <td><%= owner.last_name %></td>
           <td><%= owner.middle_name %></td>
+          <td><%= owner.email %></td>
           <td><%= owner.city %></td>
           <td><%= owner.street %></td>
           <td><%= owner.house_no %></td>

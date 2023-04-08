@@ -12,6 +12,8 @@ class RegisterOfDocumentsController < ApplicationController
 
   def create
     @register_of_document = RegisterOfDocument.new(register_of_document_params)
+    @register_of_document.datascans.attach(params[:datascans])
+
     if @register_of_document.save!
       redirect_to action: "index"
     else
@@ -23,6 +25,8 @@ class RegisterOfDocumentsController < ApplicationController
   end
 
   def update
+    @register_of_document.datascans.attach(params[:datascans])
+
     if @register_of_document.update(register_of_document_params)
       redirect_to action: "index"
     else
@@ -44,7 +48,7 @@ class RegisterOfDocumentsController < ApplicationController
   private
 
   def register_of_document_params
-    params.require(:register_of_document).permit(:register_of_documents_id, :city, :street, :house_no)
+    params.require(:register_of_document).permit(:register_of_documents_id, :city, :street, :house_no, datascans: [])
   end
 
   def find_register_of_document

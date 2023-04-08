@@ -1,6 +1,6 @@
 <article @class="post">
   <section class="post-head">
-    <h4>Добавить адре дома</h4>
+    <h4>Добавить адреc дома</h4>
   </section>
 
   <section class="post-summary">
@@ -8,24 +8,33 @@
       <table>
         <tbody>
           <%= form_for @register_of_document do |f| %>
-            <div class="field">
-              <%= f.label "Город" %><br />
-              <%= f.text_field :city, autocomplete: "city" %>
-            </div>
+            <div class="row g-3">
+              <div class="col">
+                <label for="inputEmail4" class="form-label">Город</label>
+                <input type="text" class="form-control" placeholder="Город" <%= f.text_field :city, autocomplete: "city" %></input>
+              </div>
 
-            <div class="field">
-              <%= f.label "Улица" %><br />
-              <%= f.text_field :street, autocomplete: "street" %>
-            </div>
+              <div class="col">
+                <label for="inputEmail4" class="form-label">Улица</label>
+                <input type="text" class="form-control" placeholder="Улица" <%= f.text_field :street, autocomplete: "street" %></input>
+              </div>
 
-            <div class="field">
-              <%= f.label "Дои №" %><br />
-              <%= f.text_field :house_no, autocomplete: "house_no" %>
+              <div class="col">
+                <label for="inputEmail4" class="form-label">Дои №</label>
+                <input type="text" class="form-control" placeholder="Дои №" <%= f.text_field :house_no, autocomplete: "house_no" %></input>
+              </div>
             </div>
 
             <p class="mb-sm text-red">
+              <div class="field">
+                <%= f.label "Документы" %><br />
+                <%= f.file_field :datascans %>
+              </div>
+            </p>
+
+            <p class="mb-sm text-red">
               <div class="actions">
-                <%= f.submit "добавить адрес" %>
+                <%= f.submit "добавить адрес", class: 'btn btn-light' %>
               </div>
             </p>
           <% end %>

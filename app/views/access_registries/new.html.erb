@@ -21,14 +21,16 @@
               <%= f.select :register_of_owners_id, RegisterOfOwner.all.collect { |owner|  ["#{owner.id}, #{owner.last_name},  #{owner.middle_name}"]  } %>
             </div>
 
-            <div class="field">
-              <%= f.label "Login" %><br />
-              <%= f.text_field :login, autocomplete: "login" %>
-            </div>
+            <div class="row g-3">
+              <div class="col">
+                <label for="inputEmail4" class="form-label">Login</label>
+                <input type="text" class="form-control" placeholder="Login" <%= f.text_field :login, autocomplete: "login" %></input>
+              </div>
 
-            <div class="field">
-              <%= f.label "Password" %><br />
-              <%= f.text_field :password, autocomplete: "password" %>
+              <div class="col">
+                <label for="inputEmail4" class="form-label">Password</label>
+                <input type="text" class="form-control" placeholder="Password" <%= f.text_field :password, autocomplete: "password" %></input>
+              </div>
             </div>
 
             <div class="field">
