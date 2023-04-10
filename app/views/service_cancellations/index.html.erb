@@ -1,5 +1,10 @@
 <table class="table caption-top">
   <caption>Список отказавшихся от услкуги</caption>
+  <div class="btn-group btn-group-justified" role="group">
+    <div class="btn-group" role="group">
+      <button type="button" class="btn btn-default"><%= link_to 'Добавить отказника', new_service_cancellation_path, class: 'btn btn-success btn-sm' %></button>
+    </div>
+  </div>
   <thead>
     <tr>
       <th scope="col">ID</th>
@@ -21,10 +26,10 @@
         <td>
           <div class="btn-group btn-group-justified" role="group">
             <div class="btn-group" role="group">
-              <button type="button" class="btn btn-default"><%= link_to 'Ред.', edit_service_cancellation_path(cancell), class: 'btn btn-info' %></button>
+              <button type="button" class="btn btn-default"><%= link_to 'Ред.', edit_service_cancellation_path(cancell), class: 'btn btn-info btn-sm' %></button>
             </div>
             <div class="btn-group" role="group">
-              <button type="button" class="btn btn-default"><%= link_to 'Удалить', cancell, data: { turbo_method: "delete", turbo_confirm: "Вы уверены?" }, class: 'btn btn-outline-danger' %></button>
+              <button type="button" class="btn btn-default"><%= link_to 'Удалить', cancell, data: { turbo_method: "delete", turbo_confirm: "Вы уверены?" }, class: 'btn btn-outline-danger btn-sm' %></button>
             </div>
           </div>
         </td>

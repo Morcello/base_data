@@ -9,7 +9,6 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-
   <body>
     <div class="container">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -20,16 +19,16 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav">
             <li class="nav-item active">
-              <a class="nav-link" href="<%= new_access_registry_path %>">Реестор выданных доступов<span class="sr-only"></span></a>
+              <a class="nav-link" href="<%= register_of_owners_path %>">Реестр собственников<span class="sr-only"></span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<%= new_register_of_owner_path %>">Реестр собственников</a>
+              <a class="nav-link" href="<%= access_registries_path %>">Реестор доступов</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<%= new_service_cancellation_path %>">Реестр отказников</a>
+              <a class="nav-link" href="<%= service_cancellations_path %>">Реестр отказников</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<%= new_register_of_document_path %>">Реестр документов</a>
+              <a class="nav-link" href="<%= register_of_documents_path %>">Реестр документов</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -45,7 +44,6 @@
         </div>
       </nav>
     </div>
-
     <div class="container main">
       <%= yield %>
     </div>

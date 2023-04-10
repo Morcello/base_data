@@ -12,95 +12,85 @@
               <label for="inputEmail4" class="form-label">Имя</label>
               <input type="text" class="form-control" placeholder="Имя" <%= f.text_field :first_name, autocomplete: "first_name" %></input>
             </div>
-
             <div class="col">
               <label for="inputEmail4" class="form-label">Фамилия</label>
               <input type="text" class="form-control" placeholder="Фамилия" <%= f.text_field :last_name, autocomplete: "last_name" %></input>
             </div>
-
             <div class="col">
               <label for="inputEmail4" class="form-label">Отчество</label>
               <input type="text" class="form-control" placeholder="Отчество" <%= f.text_field :middle_name, autocomplete: "middle_name" %></input>
             </div>
           </div>
-
           <div class="row g-3">
             <div class="col">
               <label for="inputEmail4" class="form-label">Лицевой счет</label>
               <input type="text" class="form-control" placeholder="Лицевой счет" <%= f.text_field :personal_account, autocomplete: "personal_account" %></input>
             </div>
-
             <div class="col">
               <label for="inputEmail4" class="form-label">Город</label>
               <input type="text" class="form-control" placeholder="Город" <%= f.text_field :city, autocomplete: "city" %></input>
             </div>
-
             <div class="col">
               <label for="inputEmail4" class="form-label">Улица</label>
               <input type="text" class="form-control" placeholder="Улица" <%= f.text_field :street, autocomplete: "street" %></input>
             </div>
           </div>
-
           <div class="row g-3">
             <div class="col">
               <label for="inputEmail4" class="form-label">Дом №</label>
               <input type="text" class="form-control" placeholder="Дом №" <%= f.text_field :house_no, autocomplete: "house_no" %></input>
             </div>
-
             <div class="col">
               <label for="inputEmail4" class="form-label">Квартира №</label>
               <input type="text" class="form-control" placeholder="Квартира №" <%= f.text_field :apartment_no, autocomplete: "apartment_no" %></input>
             </div>
-
             <div class="col">
               <label for="inputEmail4" class="form-label">Кол-во собственников</label>
               <input type="text" class="form-control" placeholder="Кол-во собственников" <%= f.text_field :number_owners, autocomplete: "number_owners" %></input>
             </div>
           </div>
-
           <div class="row g-3">
             <div class="col">
               <label for="inputEmail4" class="form-label">Телефон</label>
               <input type="text" class="form-control" placeholder="Телефон" <%= f.text_field :phone, autocomplete: "phone" %></input>
             </div>
-
             <div class="col">
-              <label for="inputEmail4" class="form-label">@ email</label>
-              <input type="text" class="form-control" placeholder="@ email" <%= f.email_field :email, autofocus: true, autocomplete: "email" %></input>
+              <label for="inputEmail4" class="form-label">@email</label>
+              <input type="text" class="form-control" placeholder="@email" <%= f.email_field :email, autofocus: true, autocomplete: "email" %></input>
             </div>
-
             <div class="col">
               <label for="inputEmail4" class="form-label">Серийный №</label>
               <input type="text" class="form-control" placeholder="Серийный №" <%= f.text_field :serial_number, autocomplete: "serial_number" %></input>
             </div>
-
             <div class="col">
               <label for="inputEmail4" class="form-label">Подрядчик</label>
               <input type="text" class="form-control" placeholder="Подрядчик" <%= f.text_field :contractor, autocomplete: "contractor" %></input>
             </div>
           </div>
-
-          <div class="field">
-            <%= f.label "Дата активации дома" %><br />
-            <%= f.date_select :home_activation_date, autocomplete: "home_activation_date" %>
+          <p class="mb-sm text-red">
+            <div class="field">
+              <%= f.label "Дата активации дома" %><br />
+              <%= f.date_select :home_activation_date, autocomplete: "home_activation_date" %>
+            </div>
+          </p>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+            <label class="form-check-label" for="defaultCheck1">
+              <div class="field">
+                <%= f.label "Дата блокировки абонента" %><br />
+                <%= f.date_select :subscriber_blocking_date, autocomplete: "subscriber_blocking_date" %>
+              </div>
+            </label>
           </div>
-
-          <div class="field">
-            <%= f.label "Дата блокировки абонента" %><br />
-            <%= f.date_select :subscriber_blocking_date, autocomplete: "subscriber_blocking_date" %>
-          </div>
-
-
           <p class="mb-sm text-red">
             <div class="field">
               <%= f.label "Документы" %><br />
               <%= f.file_field :scans %>
             </div>
           </p>
-
           <p class="mb-sm text-red">
             <div class="actions">
-              <%= f.submit "Добавить", class: 'btn btn-light' %>
+              <%= f.submit "Добавить", class: 'btn btn-light btn-sm' %>
             </div>
           </p>
         <% end %>

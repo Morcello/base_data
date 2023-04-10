@@ -1,5 +1,10 @@
 <table class="table caption-top">
   <caption>Реестр докуметнов домов</caption>
+  <div class="btn-group btn-group-justified" role="group">
+    <div class="btn-group" role="group">
+      <button type="button" class="btn btn-default"><%= link_to 'Добавить адрес', new_register_of_document_path, class: 'btn btn-success btn-sm' %></button>
+    </div>
+  </div>
   <thead>
     <tr>
       <th scope="col">ID</th>
@@ -26,10 +31,10 @@
         <td>
           <div class="btn-group btn-group-justified" role="group">
             <div class="btn-group" role="group">
-              <button type="button" class="btn btn-default"><%= link_to 'Ред.', edit_register_of_document_path(doc), class: 'btn btn-info' %></button>
+              <button type="button" class="btn btn-default"><%= link_to 'Ред.', edit_register_of_document_path(doc), class: 'btn btn-info btn-sm' %></button>
             </div>
             <div class="btn-group" role="group">
-              <button type="button" class="btn btn-default"><%= link_to 'Удалить', doc, data: { turbo_method: "delete", turbo_confirm: "Вы уверены?" }, class: 'btn btn-outline-danger' %></button>
+              <button type="button" class="btn btn-default"><%= link_to 'Удалить', doc, data: { turbo_method: "delete", turbo_confirm: "Вы уверены?" }, class: 'btn btn-outline-danger btn-sm' %></button>
             </div>
           </div>
         </td>

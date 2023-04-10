@@ -1,6 +1,17 @@
 <div class="table-responsive">
+  <div class="btn-group btn-group-justified" role="group">
+    <div class="btn-group" role="group">
+      <button type="button" class="btn btn-default"><%= link_to 'Добавить собственника', new_register_of_owner_path, class: 'btn btn-success btn-sm' %></button>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <form class="d-flex">
+      <input class="form-control me-2" type="search" placeholder="Введите адрес и номер дома" aria-label="Поиск"><br />
+      <button class="btn btn-outline-success btn-sm" type="submit">Поиск</button>
+    </form>
+  </div>
   <table class="table caption-top">
-    <caption>Список заявителей</caption>
+    <caption>Список собственников</caption>
     <thead>
       <tr>
         <th scope="col">ID</th>
@@ -52,10 +63,10 @@
           <td>
             <div class="btn-group btn-group-justified" role="group">
               <div class="btn-group" role="group">
-                <button type="button" class="btn btn-default"><%= link_to 'Редактировать', edit_register_of_owner_path(owner), class: 'btn btn-info' %></button>
+                <button type="button" class="btn btn-default"><%= link_to 'Редактировать', edit_register_of_owner_path(owner), class: 'btn btn-info btn-sm' %></button>
               </div>
               <div class="btn-group" role="group">
-                <button type="button" class="btn btn-default"><%= link_to 'Удалить', owner, data: { turbo_method: "delete", turbo_confirm: "Вы уверены?" }, class: 'btn btn-danger' %></button>
+                <button type="button" class="btn btn-default"><%= link_to 'Удалить', owner, data: { turbo_method: "delete", turbo_confirm: "Вы уверены?" }, class: 'btn btn-danger btn-sm' %></button>
               </div>
             </div>
           </td>
