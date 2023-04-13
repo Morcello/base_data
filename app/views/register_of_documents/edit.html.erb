@@ -31,18 +31,14 @@
                 <%= f.file_field :datascans %>
               </div>
             </p>
-
-            <p class="mb-sm text-red">
+            <div class="btn-group">
               <div class="actions">
-                <%= f.submit "Изменить", class: 'btn btn-light btn-sm' %>
+                <%= f.submit "Изменить", class: 'btn btn-success btn-sm'%>
+                <%= link_to register_of_documents_path do %>
+                  <button class="btn btn-success btn-sm">Назад</button>
+                <% end %>
               </div>
-            </p>
-
-            <p class="mb-sm text-red">
-              <div class="actions">
-                <%= f.submit "Назад", class: 'btn btn-light btn-sm' %>
-              </div>
-            </p>
+            </div>
           <% end %>
         </tbody>
       </table>

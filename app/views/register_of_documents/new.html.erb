@@ -13,30 +13,29 @@
                 <label for="inputEmail4" class="form-label">Город</label>
                 <input type="text" class="form-control" placeholder="Город" <%= f.text_field :city, autocomplete: "city" %></input>
               </div>
-
               <div class="col">
                 <label for="inputEmail4" class="form-label">Улица</label>
                 <input type="text" class="form-control" placeholder="Улица" <%= f.text_field :street, autocomplete: "street" %></input>
               </div>
-
               <div class="col">
                 <label for="inputEmail4" class="form-label">Дои №</label>
                 <input type="text" class="form-control" placeholder="Дои №" <%= f.text_field :house_no, autocomplete: "house_no" %></input>
               </div>
             </div>
-
             <p class="mb-sm text-red">
               <div class="field">
                 <%= f.label "Документы" %><br />
                 <%= f.file_field :datascans %>
               </div>
             </p>
-
-            <p class="mb-sm text-red">
+            <div class="btn-group">
               <div class="actions">
-                <%= f.submit "добавить", class: 'btn btn-light btn-sm' %>
+                <%= f.submit "добавить", class: 'btn btn-success btn-sm' %>
+                <%= link_to register_of_documents_path do %>
+                  <button class="btn btn-success btn-sm">Назад</button>
+                <% end %>
               </div>
-            </p>
+            </div>
           <% end %>
         </tbody>
       </table>

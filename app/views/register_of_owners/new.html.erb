@@ -69,7 +69,7 @@
           </div>
           <p class="mb-sm text-red">
             <div class="field">
-              <%= f.label "Дата активации дома" %><br />
+              <%= f.label "Доступ" %><br />
               <%= f.date_select :home_activation_date, autocomplete: "home_activation_date" %>
             </div>
           </p>
@@ -88,11 +88,14 @@
               <%= f.file_field :scans %>
             </div>
           </p>
-          <p class="mb-sm text-red">
+          <div class="btn-group">
             <div class="actions">
-              <%= f.submit "Добавить", class: 'btn btn-light btn-sm' %>
+              <%= f.submit "Добавить", class: 'btn btn-success btn-sm' %>
+              <%= link_to register_of_owners_path do %>
+                <button class="btn btn-success btn-sm">Назад</button>
+              <% end %>
             </div>
-          </p>
+          </div>
         <% end %>
       </tbody>
     </table>
