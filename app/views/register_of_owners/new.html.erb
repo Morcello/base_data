@@ -1,3 +1,6 @@
+<%= stylesheet_link_tag "register_of_owners", media: "all" %>
+<%= javascript_include_tag "application" %>
+
 <section class="post-head">
   <h6>РЕЕСТР СОБСТВЕННИКОВ</h6>
 </section>
@@ -74,8 +77,8 @@
             </div>
           </p>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-            <label class="form-check-label" for="defaultCheck1">
+            <input class="form-check-input" type="checkbox" name='form-check-input_date' value="" id="defaultCheck1">
+            <label class="form-check-label" name='date' for="defaultCheck1">
               <div class="field">
                 <%= f.label "Дата блокировки абонента" %><br />
                 <%= f.date_select :subscriber_blocking_date, autocomplete: "subscriber_blocking_date" %>

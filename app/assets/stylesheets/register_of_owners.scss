@@ -1,0 +1,7 @@
+label[name="date"] {
+  display: none;
+}
+
+input[name="form-check-input_date"]:checked~label[name="date"] {
+  display: inline-block;
+}
