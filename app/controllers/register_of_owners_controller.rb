@@ -2,7 +2,11 @@ class RegisterOfOwnersController < ApplicationController
   before_action :find_register_of_owner, only: %i[show edit update destroy]
 
   def index
-    @register_of_owners = RegisterOfOwner.all
+    if params[:search].present?
+      @register_of_owners = RegisterOfOwner.where("street || house_no || ' ' || contractor like ?", "%#{params[:search]}%")
+    else
+      @register_of_owners = RegisterOfOwner.all
+    end
   end
 
   def new
@@ -49,10 +53,14 @@ class RegisterOfOwnersController < ApplicationController
   def register_of_owner_params
     params.require(:register_of_owner).permit(:first_name, :last_name, :middle_name, :personal_account, :city, :street,
                                               :house_no, :apartment_no, :number_owners, :phone, :email, :home_activation_date,
-                                              :subscriber_blocking_date, :serial_number, :contractor, scans: [])
+                                              :subscriber_blocking_date, :serial_number, :contractor, :search, scans: [])
   end
 
   def find_register_of_owner
     @register_of_owner = RegisterOfOwner.find(params[:id])
+  end
+
+  def send_fields_access_registrу
+    AccessRegistry.new
   end
 end

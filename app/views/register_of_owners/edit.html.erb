@@ -83,7 +83,7 @@
           </p>
           <div class="btn-group">
             <div class="actions">
-              <%= f.submit "Изменить", class: 'btn btn-success btn-sm'%>
+              <%= f.submit "Изменить", class: 'btn btn-success btn-sm', "data-turbo" => false%>
               <%= link_to register_of_owners_path do %>
                 <button class="btn btn-success btn-sm">Назад</button>
               <% end %>

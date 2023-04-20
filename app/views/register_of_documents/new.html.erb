@@ -30,7 +30,7 @@
             </p>
             <div class="btn-group">
               <div class="actions">
-                <%= f.submit "добавить", class: 'btn btn-success btn-sm' %>
+                <%= f.submit "добавить", class: 'btn btn-success btn-sm', "data-turbo" => false %>
                 <%= link_to register_of_documents_path do %>
                   <button class="btn btn-success btn-sm">Назад</button>
                 <% end %>

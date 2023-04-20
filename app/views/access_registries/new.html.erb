@@ -49,7 +49,7 @@
             </p>
             <div class="btn-group">
               <div class="actions">
-                <%= f.submit "Создать доступ", class: 'btn btn-success btn-sm' %>
+                <%= f.submit "Создать доступ", class: 'btn btn-success btn-sm', "data-turbo" => false %>
                 <%= link_to access_registries_path do %>
                   <button class="btn btn-success btn-sm">Назад</button>
                 <% end %>
