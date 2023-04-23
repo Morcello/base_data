@@ -39,6 +39,7 @@
     </thead>
     <tbody>
       <% @register_of_owners.each do |owner| %>
+      <% access_registry_id = AccessRegistry.find_by(register_of_owners_id:  owner.id) %>
         <tr>
           <th scope="row"><%= owner.id %></th>
           <td><%= owner.first_name %></td>

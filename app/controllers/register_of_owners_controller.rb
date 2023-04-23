@@ -13,11 +13,16 @@ class RegisterOfOwnersController < ApplicationController
     @register_of_owner = RegisterOfOwner.new
   end
 
+  def form
+    @register_of_owner = RegisterOfOwner.new
+  end
+
   def create
     @register_of_owner = RegisterOfOwner.new(register_of_owner_params)
     @register_of_owner.scans.attach(params[:scans])
 
     if @register_of_owner.save!
+      AccessRegistry.new(register_of_owners_id: @register_of_owner.id, date_issue: DateTime.current).save!
       redirect_to action: "index"
     else
       render :new, status: :unprocessable_entity
