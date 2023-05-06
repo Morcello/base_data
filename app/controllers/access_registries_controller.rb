@@ -3,7 +3,7 @@ class AccessRegistriesController < ApplicationController
   before_action :find_access_registry, only: %i[show edit update destroy]
 
   def index
-    @access_registries = AccessRegistry.all
+    @access_registries = AccessRegistry.all.paginate(page: params[:page], per_page: 7)
   end
 
   def new

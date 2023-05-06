@@ -1,40 +1,38 @@
 <table class="table caption-top">
-  <caption>Реестр докуметнов домов</caption>
+  <h4 class="text-center">Реестор документов</h4>
   <div class="btn-group btn-group-justified" role="group">
     <div class="btn-group" role="group">
       <button type="button" class="btn btn-default"><%= link_to 'Добавить адрес', new_register_of_document_path, class: 'btn btn-success btn-sm' %></button>
     </div>
   </div>
-  <thead>
+  <thead class="table-light">
     <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Город</th>
-      <th scope="col">Улица</th>
-      <th scope="col">Дом №</th>
-      <th scope="col">Сканы</th>
-      <th scope="col">Действие</th>
+      <th class="text-center" scope="col">ID</th>
+      <th class="text-center" scope="col">Город</th>
+      <th class="text-center" scope="col">Улица</th>
+      <th class="text-center" scope="col">Дом №</th>
+      <th class="text-center" scope="col">Сканы</th>
+      <th class="text-center" scope="col">Действие</th>
     </tr>
   </thead>
   <tbody>
     <% @register_of_documents.each do |doc| %>
       <tr>
-        <th scope="row"><%= doc.id %></th>
-        <td><%= doc.city %></td>
-        <td><%= doc.street %></td>
-        <td><%= doc.house_no %></td>
-        <td><%= doc.datascans.each do |scan|
+        <th class="text-center" scope="row"><%= doc.id %></th>
+        <td class="text-center"><%= doc.city %></td>
+        <td class="text-center"><%= doc.street %></td>
+        <td class="text-center"><%= doc.house_no %></td>
+        <td class="text-center"><%= doc.datascans.each do |scan|
               if scan.representable?
                 image_tag scan.representation(resize_to_limit: [100, 100])
               end
             end%>
         </td>
-        <td>
-          <div class="btn-group btn-group-justified" role="group">
+        <td class="text-center"
+          <div class="d-grid gap-2 d-md-flex justify-content-md-end" role="group">
             <div class="btn-group" role="group">
-              <button type="button" class="btn btn-default"><%= link_to 'Редактировать', edit_register_of_document_path(doc), class: 'btn btn-info btn-sm' %></button>
-            </div>
-            <div class="btn-group" role="group">
-              <button type="button" class="btn btn-default"><%= link_to 'Удалить', doc, data: { turbo_method: "delete", turbo_confirm: "Вы уверены?" }, class: 'btn btn-outline-danger btn-sm' %></button>
+              <button type="button" class="btn btn-default"><%= link_to fa_icon('pencil'), edit_register_of_document_path(doc), class: 'btn btn-info btn-sm' %></button>
+              <button type="button" class="btn btn-default"><%= link_to fa_icon('trash-o'), doc, data: { turbo_method: "delete", turbo_confirm: "Вы уверены?" }, class: 'btn btn-danger btn-sm' %></button>
             </div>
           </div>
         </td>
@@ -42,3 +40,6 @@
     <% end %>
   </tbody>
 </table>
+<div class="pagination justify-content-center">
+  <%= will_paginate @register_of_documents, renderer: BootstrapPagination::Rails %>
+</div>

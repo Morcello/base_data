@@ -1,4 +1,5 @@
 <div class="table-responsive">
+  <h4 class="text-center">Реестор собственников</h4>
   <div class="btn-group btn-group-justified" role="group">
     <div class="btn-group" role="group">
       <button type="button" class="btn btn-default"><%= link_to 'Добавить собственника', new_register_of_owner_path, class: 'btn btn-success btn-sm' %></button>
@@ -13,27 +14,27 @@
     </form>
   </div>
   <table class="table caption-top">
-    <caption>Список собственников</caption>
-    <thead>
+    <caption></caption>
+    <thead class="table-light">
       <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Имя</th>
-        <th scope="col">Фамилия</th>
-        <th scope="col">Отчество</th>
-        <th scope="col">Email</th>
-        <th scope="col">Город</th>
-        <th scope="col">Улица</th>
-        <th scope="col">Д.№</th>
-        <th scope="col">Кв. №</th>
-        <th scope="col">Кол. соб.</th>
-        <th scope="col">Телефон</th>
-        <th scope="col">Д.выдачи. доступа</th>
-        <th scope="col">Д.Блок. абонента</th>
-        <th scope="col">Сер. №</th>
-        <th scope="col">Подрядчик</th>
-        <th scope="col">Лиц. Счет</th>
-        <th scope="col">Заявление</th>
-        <th scope="col">Действия</th>
+        <th class="text-center" scope="col">ID</th>
+        <th class="text-center" scope="col">Имя</th>
+        <th class="text-center" scope="col">Фамилия</th>
+        <th class="text-center" scope="col">Отчество</th>
+        <th class="text-center" scope="col">Email</th>
+        <th class="text-center" scope="col">Город</th>
+        <th class="text-center" scope="col">Улица</th>
+        <th class="text-center" scope="col">Д.№</th>
+        <th class="text-center" scope="col">Кв. №</th>
+        <th class="text-center" scope="col">Кол. соб.</th>
+        <th class="text-center" scope="col">Телефон</th>
+        <th class="text-center" scope="col">Д.выдачи. доступа</th>
+        <th class="text-center" scope="col">Д.Блок. абонента</th>
+        <th class="text-center" scope="col">Сер. №</th>
+        <th class="text-center" scope="col">Подрядчик</th>
+        <th class="text-center" scope="col">Лиц. Счет</th>
+        <th class="text-center" scope="col">Заявление</th>
+        <th class="text-center" scope="col">Действия</th>
         <th colspan="3"></th>
       </tr>
     </thead>
@@ -41,40 +42,37 @@
       <% @register_of_owners.each do |owner| %>
       <% access_registry_id = AccessRegistry.find_by(register_of_owners_id:  owner.id) %>
         <tr>
-          <th scope="row"><%= owner.id %></th>
-          <td><%= owner.first_name %></td>
-          <td><%= link_to owner.last_name, access_registries_path %></td>
-          <td><%= owner.middle_name %></td>
-          <td><%= owner.email %></td>
-          <td><%= owner.city %></td>
-          <td><%= owner.street %></td>
-          <td><%= owner.house_no %></td>
-          <td><%= owner.apartment_no %></td>
-          <td><%= owner.number_owners %></td>
-          <td><%= owner.phone %></td>
-          <time><td><%= owner.subscriber_blocking_date.to_date.strftime("%d.%m.%y") %></td></time>
-          <time><td><%= owner.home_activation_date.to_date.strftime("%d.%m.%y") %></td></time>
-          <td><%= owner.serial_number %></td>
-          <td><%= owner.contractor %></td>
-          <td><%= owner.personal_account %></td>
-          <td><%= owner.scans.each do |scan|
-                if scan.representable?
-                  image_tag scan.representation(resize_to_limit: [100, 100])
-                end
-              end%>
+          <th class="text-center" scope="row"><%= owner.id %></th>
+          <td class="text-center"><%= owner.first_name %></td>
+          <td class="text-center"><%= link_to owner.last_name, edit_access_registry_path(owner.id) %></td>
+          <td class="text-center"><%= owner.middle_name %></td>
+          <td class="text-center"><%= owner.email %></td>
+          <td class="text-center"><%= owner.city %></td>
+          <td class="text-center"><%= owner.street %></td>
+          <td class="text-center"><%= owner.house_no %></td>
+          <td class="text-center"><%= owner.apartment_no %></td>
+          <td class="text-center"><%= owner.number_owners %></td>
+          <td class="text-center"><%= owner.phone %></td>
+          <time><td class="text-center"><%= owner.subscriber_blocking_date&.to_date&.strftime("%d.%m.%y") %></td></time>
+          <time><td class="text-center"><%= owner.home_activation_date&.to_date&.strftime("%d.%m.%y") %></td></time>
+          <td class="text-center"><%= owner.serial_number %></td>
+          <td class="text-center"><%= owner.contractor %></td>
+          <td class="text-center"><%= owner.personal_account %></td>
+          <td class="text-center"><%= owner.scans.each do |scan|
+            if scan.representable?
+                image_tag scan.representation(resize_to_limit: [100, 100])
+              end
+            end%>
           </td>
-          <td>
-            <div class="btn-group btn-group-justified" role="group">
-              <div class="btn-group" role="group">
-                <button type="button" class="btn btn-default"><%= link_to 'Редактировать', edit_register_of_owner_path(owner), class: 'btn btn-info btn-sm' %></button>
-              </div>
-              <div class="btn-group" role="group">
-                <button type="button" class="btn btn-default"><%= link_to 'Удалить', owner, data: { turbo_method: "delete", turbo_confirm: "Вы уверены?" }, class: 'btn btn-danger btn-sm' %></button>
-              </div>
-            </div>
+          <td class="text-center">
+            <%= link_to fa_icon('pencil'), edit_register_of_owner_path(owner), class: 'btn btn-info btn-sm' %>
+            <%= link_to fa_icon('trash-o'), owner, data: { turbo_method: "delete", turbo_confirm: "Вы уверены?" }, class: 'btn btn-danger btn-sm' %>
           </td>
         </tr>
       <% end %>
     </tbody>
   </table>
+  <div class="pagination justify-content-center">
+    <%= will_paginate @register_of_owners, renderer: BootstrapPagination::Rails %>
+  </div>
 </div>

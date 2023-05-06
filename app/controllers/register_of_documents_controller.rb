@@ -3,7 +3,7 @@ class RegisterOfDocumentsController < ApplicationController
   before_action :find_register_of_document, only: %i[show edit update destroy]
 
   def index
-    @register_of_documents = RegisterOfDocument.all
+    @register_of_documents = RegisterOfDocument.all.paginate(page: params[:page], per_page: 7)
   end
 
   def new

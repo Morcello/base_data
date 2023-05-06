@@ -44,6 +44,10 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
+# will_paginate provides a simple API for performing paginated queries with Active Record
+gem 'will_paginate', '~> 3.3'
+gem 'will_paginate-bootstrap'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 

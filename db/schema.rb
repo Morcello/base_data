@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_05_195202) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_29_130702) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -75,29 +75,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_05_195202) do
     t.string "street", default: "", null: false
     t.string "house_no", default: "", null: false
     t.integer "apartment_no", null: false
-    t.integer "number_owners", null: false
+    t.integer "number_owners"
     t.string "phone", default: "", null: false
-    t.datetime "home_activation_date", null: false
-    t.datetime "subscriber_blocking_date", null: false
-    t.string "contractor", default: "", null: false
-    t.string "serial_number", default: "", null: false
+    t.datetime "home_activation_date"
+    t.datetime "subscriber_blocking_date"
+    t.string "contractor", default: ""
+    t.string "serial_number", default: ""
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "debtor", default: false
+    t.boolean "condition", default: false
     t.index ["personal_account"], name: "index_register_of_owners_on_personal_account", unique: true
-  end
-
-  create_table "service_cancellations", force: :cascade do |t|
-    t.string "middle_name", default: "", null: false
-    t.string "first_name", default: "", null: false
-    t.string "last_name", default: "", null: false
-    t.datetime "date_rejection", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "register_of_owners_id", null: false
-    t.index ["first_name"], name: "index_service_cancellations_on_first_name", unique: true
-    t.index ["last_name"], name: "index_service_cancellations_on_last_name", unique: true
-    t.index ["middle_name"], name: "index_service_cancellations_on_middle_name", unique: true
-    t.index ["register_of_owners_id"], name: "index_service_cancellations_on_register_of_owners_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -118,5 +106,4 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_05_195202) do
   add_foreign_key "access_registries", "register_of_owners", column: "register_of_owners_id"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "service_cancellations", "register_of_owners", column: "register_of_owners_id"
 end

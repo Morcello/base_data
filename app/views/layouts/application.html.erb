@@ -10,6 +10,9 @@
     <%= javascript_importmap_tags %>
   </head>
   <body>
+    <% if flash[:notice].present? %>
+      <p class="mb mt message message-notice"><%= flash[:notice] %></p>
+    <% end %>
     <div class="container">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="https://olan-video.ru/">Olan-video</a>
@@ -25,20 +28,7 @@
               <a class="nav-link" href="<%= access_registries_path %>">Реестор доступов</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<%= service_cancellations_path %>">Реестр отказников</a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link" href="<%= register_of_documents_path %>">Реестр документов</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Дополнительные Рееестры
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="<%= new_register_of_document_path %>">Реестр документов</a>
-                <a class="dropdown-item" href="#">Реестр Л/С</a>
-                <a class="dropdown-item" href="#">Реестр задолжностей</a>
-              </div>
             </li>
           </ul>
         </div>
@@ -49,3 +39,11 @@
     </div>
   </body>
 </html>
+
+<!-- <link rel="stylesheet" href="https://bootstraptema.ru/plugins/2015/bootstrap3/bootstrap.min.css" /> -->
+<link rel="stylesheet" href="https://bootstraptema.ru/plugins/2016/bdt/style.css" />
+<link rel="stylesheet" href="https://bootstraptema.ru/plugins/2016/bdt/jquery.bdt.min.css" />
+<script src="https://bootstraptema.ru/plugins/jquery/jquery-1.11.3.min.js"></script>
+<script src="https://bootstraptema.ru/plugins/2015/b-v3-3-6/bootstrap.min.js"></script>
+<script src="https://bootstraptema.ru/plugins/2016/bdt/jquery.sortelements.js" type="text/javascript"></script>
+<script src="https://bootstraptema.ru/plugins/2016/bdt/jquery.bdt.min.js" type="text/javascript"></script>

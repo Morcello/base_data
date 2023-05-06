@@ -5,7 +5,7 @@ class RegisterOfOwnersController < ApplicationController
     if params[:search].present?
       @register_of_owners = RegisterOfOwner.where("street || house_no || ' ' || contractor like ?", "%#{params[:search]}%")
     else
-      @register_of_owners = RegisterOfOwner.all
+      @register_of_owners = RegisterOfOwner.all.paginate(page: params[:page], per_page: 10)
     end
   end
 
@@ -20,10 +20,12 @@ class RegisterOfOwnersController < ApplicationController
   def create
     @register_of_owner = RegisterOfOwner.new(register_of_owner_params)
     @register_of_owner.scans.attach(params[:scans])
+    # flash[:notice] = 'Собственник добавлен!'
+    # flash.now.notice = 'Собственник добавлен!'
 
     if @register_of_owner.save!
       AccessRegistry.new(register_of_owners_id: @register_of_owner.id, date_issue: DateTime.current).save!
-      redirect_to action: "index"
+      redirect_to action: "index", notice: 'Собственник добавлен!'
     else
       render :new, status: :unprocessable_entity
     end
