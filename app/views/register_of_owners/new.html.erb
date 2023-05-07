@@ -4,7 +4,16 @@
 <section class="post-head">
   <h4 class="text-center">Добавить собственника</h4>
 </section>
-
+<% if @register_of_owner.errors.full_messages.any? %>
+  <div class="alert alert-danger">
+    <ul class="mb-0">
+      <li>Все поля должны быть заполнены!!!</li>
+      <% @register_of_owner.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 <section class="post-summary">
   <small>
     <table>
@@ -86,7 +95,7 @@
           <p class="mb-sm text-red">
             <div class="field">
               <%= f.label "Документы" %><br />
-              <%= f.file_field :scans %>
+              <%= f.file_field :scans, class: 'btn btn-success btn-sm' %>
             </div>
           </p>
           <div class="btn-group">

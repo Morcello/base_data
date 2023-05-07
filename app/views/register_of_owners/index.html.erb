@@ -8,7 +8,7 @@
   <div class="container-fluid">
     <form class="d-flex">
       <%= form_tag register_of_owners_path, :method => 'get' do %>
-        <%= text_field_tag :search, params[:search], class: "form-control me-2", placeholder: "Введите Улицу и Д.№ без пробела пример: Олкина7, или выполние поиск по подрядчику" %>
+        <%= text_field_tag :search, params[:search], class: "form-control me-2", placeholder: "Введите Улицу и Д.№ без пробела пример: Пшенична7, или выполние поиск по подрядчику" %>
         <%= submit_tag "Поиск", class: 'btn btn-success btn-sm' %>
       <% end %>
     </form>
@@ -34,7 +34,7 @@
         <th class="text-center" scope="col">Подрядчик</th>
         <th class="text-center" scope="col">Лиц. Счет</th>
         <th class="text-center" scope="col">Заявление</th>
-        <th class="text-center" scope="col">Действия</th>
+        <th class="text-center" scope="col">Действия:</th>
         <th colspan="3"></th>
       </tr>
     </thead>
