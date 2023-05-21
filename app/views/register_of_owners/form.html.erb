@@ -2,10 +2,11 @@
 <%= javascript_include_tag "application" %>
 
 <section class="post-head">
+  <img src="https://olan-video.ru/wp-content/uploads/2021/11/%D0%BB%D0%BE%D0%B3%D0%BE.svg" alt="" width="270" height="90" class="d-inline-block align-text-top">
   <h4 class="text-center">Хочу получить доступ к системе</h4>
 </section>
 <p class="mb-sm text-red">
-  <a href="https://olan-video.ru/wp-content/uploads/2023/01/Заявление_на_получение_доступа_ОЛАН_универсальное.pdf" class="btn btn-success btn-sm" role="button" data-bs-toggle="button">Бланк заявления на получение доступа</a>
+  <a href="https://olan-video.ru/wp-content/uploads/2023/01/Заявление_на_получение_доступа_ОЛАН_универсальное.pdf" class="btn text-white btn-sm" style="background-color: #6f42c1;" role="button" data-bs-toggle="button">Скачать бланк заявления для получение доступа</a>
 </p>
 <section class="post-summary">
   <small>
@@ -66,9 +67,9 @@
               <%= form.file_field :scans, class: 'form-control' %>
             </div>
           </p>
-          <div class="btn-group">
+          <div class="btn-group" style="background-color: #6f42c1;">
             <div class="actions">
-              <%= form.submit "Отправить", class: 'btn btn-success btn-sm', data: { turbolinks: false } %>
+              <%= form.submit "Отправить", class: 'btn text-white btn-sm', data: { turbolinks: false } %>
             </div>
           </div>
         <% end %>
