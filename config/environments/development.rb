@@ -62,6 +62,9 @@ Rails.application.configure do
 
   config.active_storage.service = :local
 
+  Rails.application.reloader.to_prepare do
+    ActiveStorage::Blob
+  end
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
 

@@ -3,5 +3,5 @@ class RegisterOfDocument < ApplicationRecord
 
   validates :city, presence: true, length: { minimum: 3 }
   validates :street, presence: true, length: { minimum: 3 }
-  validates :house_no, presence: true, length: { minimum: 3 }
+  validates :house_no, presence: true, length: { minimum: 1 }
 end

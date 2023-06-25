@@ -12,7 +12,7 @@ class RegisterOfDocumentsController < ApplicationController
 
   def create
     @register_of_document = RegisterOfDocument.new(register_of_document_params)
-    @register_of_document.datascans.attach(params[:datascans])
+    @register_of_document.datascans.attach(register_of_document_params[:datascans])
 
     if @register_of_document.save!
       redirect_to action: "index"
@@ -25,7 +25,7 @@ class RegisterOfDocumentsController < ApplicationController
   end
 
   def update
-    @register_of_document.datascans.attach(params[:datascans])
+    @register_of_document.datascans.attach(register_of_document_params[:datascans])
 
     if @register_of_document.update(register_of_document_params)
       redirect_to action: "index"
