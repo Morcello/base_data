@@ -58,6 +58,10 @@ class RegisterOfOwnersController < ApplicationController
     end
   end
 
+  def import
+
+  end
+
   private
 
   def register_of_owner_params

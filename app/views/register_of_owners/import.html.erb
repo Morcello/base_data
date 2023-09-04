@@ -1,0 +1,16 @@
+  <%= form_with url:  register_of_owners_import_path do |f| %>
+    <p class="mb-sm text-red">
+      <div class="field">
+        <%= f.label "Ведомость" %><br />
+        <%= f.file_field :statement, class: 'btn btn-success btn-sm' %>
+      </div>
+    </p>
+    <div class="btn-group">
+      <div class="actions">
+        <%= f.submit "Загрузить", class: 'btn btn-success btn-sm', data: { turbolinks: false } %>
+        <%= link_to register_of_owners_path do %>
+          <button class="btn btn-success btn-sm">Назад</button>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
