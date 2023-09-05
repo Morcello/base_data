@@ -59,7 +59,9 @@ class RegisterOfOwnersController < ApplicationController
   end
 
   def import
-
+    if params[:statement].present?
+      ImportService.call params[:statement]
+    end
   end
 
   private
