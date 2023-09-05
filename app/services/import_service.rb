@@ -28,6 +28,5 @@ class ImportService < ApplicationService
       @debt = value.value.chomp.to_f if value.coordinate[1] == 32
     end
     owner_info = {personal_account: @personal_account, debt: @debt}
-    byebug
   end
 end
