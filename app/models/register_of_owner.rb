@@ -8,9 +8,9 @@ class RegisterOfOwner < ApplicationRecord
   validates :personal_account, presence: true, length: { minimum: 3 }
   validates :city, presence: true, length: { minimum: 3 }
   validates :street, presence: true, length: { minimum: 3 }
-  validates :house_no, presence: true, length: { minimum: 3 }
-  validates :apartment_no, presence: true, length: { minimum: 3 }
-  validates :number_owners, presence: true, length: { minimum: 3 }
+  validates :house_no, presence: true, length: { minimum: 1 }
+  validates :apartment_no, presence: true, length: { minimum: 1 }
+  validates :number_owners, presence: true, length: { minimum: 1 }
   validates :phone, presence: true, length: { minimum: 3 }
   validates :email, presence: true, length: { minimum: 3 }
   validates :home_activation_date, presence: true, length: { minimum: 3 }

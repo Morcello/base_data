@@ -3,11 +3,10 @@ class RegisterOfOwnersController < ApplicationController
 
   def index
     if params[:search].present?
-      @register_of_owners = RegisterOfOwner.where("street || house_no || ' ' || contractor like ?", "%#{params[:search]}%").paginate(page: params[:page], per_page: 10)
+      @register_of_owners = RegisterOfOwner.where("street || house_no || personal_account || ' ' || contractor like ?", "%#{params[:search]}%").paginate(page: params[:page], per_page: 10)
       flash[:notice] = "Записи в базе данных не найдены." if @register_of_owners.blank?
     else
       @register_of_owners = RegisterOfOwner.all.paginate(page: params[:page], per_page: 10)
-      flash[:notice] = "Записи в базе данных не найдены." if @register_of_owners.blank?
     end
   end
 
@@ -39,7 +38,7 @@ class RegisterOfOwnersController < ApplicationController
     @register_of_owner.scans.attach(params[:scans])
 
     if @register_of_owner.update(register_of_owner_params)
-      flash[:success] = 'Данные обнавлены!'
+      flash[:success] = 'Данные изменены!'
       redirect_to action: "index"
     else
       render :edit, status: :unprocessable_entity
@@ -69,7 +68,7 @@ class RegisterOfOwnersController < ApplicationController
   def register_of_owner_params
     params.require(:register_of_owner).permit(:first_name, :last_name, :middle_name, :personal_account, :city, :street,
                                               :house_no, :apartment_no, :number_owners, :phone, :email, :home_activation_date,
-                                              :subscriber_blocking_date, :serial_number, :contractor, :search, scans: [])
+                                              :subscriber_blocking_date, :serial_number, :contractor, :search, :statement, scans: [])
   end
 
   def find_register_of_owner

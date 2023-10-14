@@ -49,10 +49,10 @@
             </p>
             <div class="btn-group">
               <div class="actions">
-                <%= f.submit "Создать доступ", class: 'btn btn-success btn-sm' %>
-                  <%= link_to access_registries_path(@access_registrу, format: :turbo_stream) do %>
-                    <button class="btn btn-success btn-sm">Назад</button>
-                  <% end %>
+                <%= f.submit "Создать доступ", class: 'btn btn-success btn-sm', data: { turbolinks: false } %>
+                <%= link_to access_registries_path(@access_registrу, format: :turbo_stream) do %>
+                  <button class="btn btn-success btn-sm">Назад</button>
+                <% end %>
               </div>
             </div>
           <% end %>

@@ -101,7 +101,7 @@
           <div class="btn-group">
             <div class="actions">
               <%= f.submit "Добавить", class: 'btn btn-success btn-sm', data: { turbolinks: false } %>
-              <%= link_to register_of_owners_path do %>
+              <%= link_to register_of_owners_path(@register_of_owner, format: :turbo_stream) do %>
                 <button class="btn btn-success btn-sm">Назад</button>
               <% end %>
             </div>

@@ -30,8 +30,8 @@
             </p>
             <div class="btn-group">
               <div class="actions">
-                <%= f.submit "добавить", class: 'btn btn-success btn-sm', "data-turbo" => false %>
-                <%= link_to register_of_documents_path do %>
+                <%= f.submit "добавить", class: 'btn btn-success btn-sm', data: { turbolinks: false } %>
+                <%= link_to register_of_documents_path(@register_of_document, format: :turbo_stream) do %>
                   <button class="btn btn-success btn-sm">Назад</button>
                 <% end %>
               </div>
