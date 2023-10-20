@@ -1,9 +1,11 @@
 <div class="table-responsive">
   <h4 class="text-center">Реестор собственников</h4>
   <div class="btn-group btn-group-justified" role="group">
-    <div class="btn-group" role="group">
-      <button type="button" class="btn btn-default"><%= link_to 'Добавить собственника', new_register_of_owner_path, class: 'btn btn-success btn-sm' %></button>
-    </div>
+    <%= turbo_frame_tag "new_owner" do %>
+      <div class="btn-group" role="group">
+        <button type="button" class="btn btn-default"><%= link_to 'Добавить собственника', new_register_of_owner_path, class: 'btn btn-success btn-sm' %></button>
+      </div>
+    <% end %>
   </div>
   <div class="container-fluid">
     <form class="d-flex">
