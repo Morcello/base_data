@@ -59,7 +59,17 @@ class RegisterOfOwnersController < ApplicationController
 
   def import
     if params[:statement].present?
-      ImportService.call params[:statement]
+      @owner_list = ImportService.call params[:statement]
+      finish_list = []
+
+      @owner_list.map do |value_id|
+        owner = RegisterOfOwner.where("personal_account like ?", "%#{value_id}%")
+        finish_list << owner
+      end
+
+      finish_list
+    else
+      @register_of_owners = RegisterOfOwner.all.paginate(page: params[:page], per_page: 10)
     end
   end
 
@@ -68,7 +78,7 @@ class RegisterOfOwnersController < ApplicationController
   def register_of_owner_params
     params.require(:register_of_owner).permit(:first_name, :last_name, :middle_name, :personal_account, :city, :street,
                                               :house_no, :apartment_no, :number_owners, :phone, :email, :home_activation_date,
-                                              :subscriber_blocking_date, :serial_number, :contractor, :search, :statement, scans: [])
+                                              :subscriber_blocking_date, :serial_number, :contractor, :search, scans: [])
   end
 
   def find_register_of_owner

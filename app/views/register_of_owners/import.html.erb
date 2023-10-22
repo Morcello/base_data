@@ -25,3 +25,53 @@
     </table>
   </small>
 </section>
+
+<table class="table caption-top">
+  <caption></caption>
+  <thead class="table-light">
+    <tr>
+      <th class="text-center" scope="col">ID</th>
+      <th class="text-center" scope="col">Имя</th>
+      <th class="text-center" scope="col">Фамилия</th>
+      <th class="text-center" scope="col">Отчество</th>
+      <th class="text-center" scope="col">Email</th>
+      <th class="text-center" scope="col">Город</th>
+      <th class="text-center" scope="col">Улица</th>
+      <th class="text-center" scope="col">Д.№</th>
+      <th class="text-center" scope="col">Кв. №</th>
+      <th class="text-center" scope="col">Кол. соб.</th>
+      <th class="text-center" scope="col">Телефон</th>
+      <th class="text-center" scope="col">Д.выдачи. доступа</th>
+      <th class="text-center" scope="col">Д.Блок. абонента</th>
+      <th class="text-center" scope="col">Сер. №</th>
+      <th class="text-center" scope="col">Подрядчик</th>
+      <th class="text-center" scope="col">Лиц. Счет</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @register_of_owners.each do |owner| %>
+      <tr>
+        <th class="text-center" scope="row"><%= owner.id %></th>
+        <td class="text-center"><%= owner.first_name %></td>
+        <td class="text-center"><%= owner.last_name %></td>
+        <td class="text-center"><%= owner.middle_name %></td>
+        <td class="text-center"><%= owner.email %></td>
+        <td class="text-center"><%= owner.city %></td>
+        <td class="text-center"><%= owner.street %></td>
+        <td class="text-center"><%= owner.house_no %></td>
+        <td class="text-center"><%= owner.apartment_no %></td>
+        <td class="text-center"><%= owner.number_owners %></td>
+        <td class="text-center"><%= owner.phone %></td>
+        <time><td class="text-center"><%= owner.subscriber_blocking_date&.to_date&.strftime("%d.%m.%y") %></td></time>
+        <time><td class="text-center"><%= owner.home_activation_date&.to_date&.strftime("%d.%m.%y") %></td></time>
+        <td class="text-center"><%= owner.serial_number %></td>
+        <td class="text-center"><%= owner.contractor %></td>
+        <td class="text-center"><%= owner.personal_account %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div class="pagination justify-content-center">
+  <%= will_paginate @register_of_owners, renderer: BootstrapPagination::Rails %>
+</div>
