@@ -60,16 +60,10 @@ class RegisterOfOwnersController < ApplicationController
   def import
     if params[:statement].present?
       @owner_list = ImportService.call params[:statement]
-      finish_list = []
-
-      @owner_list.map do |value_id|
-        owner = RegisterOfOwner.where("personal_account like ?", "%#{value_id}%")
-        finish_list << owner
-      end
-
-      finish_list
+      flash[:success] ="#{@owner_list.count} cовпадений найдены"
+      redirect_to action: "index"
     else
-      @register_of_owners = RegisterOfOwner.all.paginate(page: params[:page], per_page: 10)
+      render :import, status: :unprocessable_entity
     end
   end
 

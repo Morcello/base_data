@@ -20,16 +20,35 @@ class ImportService < ApplicationService
     @owner_info_kvc.map do |value|
       owner = RegisterOfOwner.find_by(personal_account: value[:personal_account])
       if owner.present?
-        owner_list << owner.personal_account
-
-      #   owner_list << {
-      #     id: owner.id,
-      #     personal_account: owner.personal_account,
-      #     debt: value[:debt]
-      #   }
+        owner_list << {
+          id: owner.id,
+          email: owner.email,
+          middle_name: owner.middle_name,
+          first_name: owner.first_name,
+          last_name: owner.last_name,
+          personal_account: owner.personal_account,
+          city: owner.city,
+          street: owner.street,
+          house_no: owner.house_no,
+          apartment_no: owner.apartment_no,
+          number_owners: owner.number_owners,
+          phone: owner.phone,
+          home_activation_date: owner.home_activation_date,
+          subscriber_blocking_date: owner.subscriber_blocking_date,
+          contractor: owner.contractor,
+          debtor: true
+        #  debt: value[:debt]
+        }
       end
     end
 
-    owner_list
+    RegisterOfOwner.create(owner_list)
   end
+
+  # private
+  #
+  # def customer_transaction
+  #   RegisterOfOwner.create(owner_list).transaction do
+  #   end
+  # end
 end
