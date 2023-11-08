@@ -20,3 +20,57 @@
       </div>
     <% end %>
   </table>
+
+  <table class="table caption-top">
+    <caption></caption>
+    <thead class="table-light">
+      <tr>
+        <th class="text-center" scope="col">ID</th>
+        <th class="text-center" scope="col">Имя</th>
+        <th class="text-center" scope="col">Фамилия</th>
+        <th class="text-center" scope="col">Отчество</th>
+        <th class="text-center" scope="col">Email</th>
+        <th class="text-center" scope="col">Город</th>
+        <th class="text-center" scope="col">Улица</th>
+        <th class="text-center" scope="col">Д.№</th>
+        <th class="text-center" scope="col">Кв. №</th>
+        <th class="text-center" scope="col">Кол. соб.</th>
+        <th class="text-center" scope="col">Телефон</th>
+        <th class="text-center" scope="col">Д.выдачи. доступа</th>
+        <th class="text-center" scope="col">Д.Блок. абонента</th>
+        <th class="text-center" scope="col">Сер. №</th>
+        <th class="text-center" scope="col">Подрядчик</th>
+        <th class="text-center" scope="col">Лиц. Счет</th>
+        <th class="text-center" scope="col">Действия:</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <% if params[:statement] %>
+      <tbody>
+        <% @owner_list.each do |owner_debet| %>
+          <tr>
+            <th class="text-center" scope="row"><%= owner_debet.id %></th>
+            <td class="text-center"><%= owner_debet.first_name %></td>
+            <td class="text-center"><%= owner_debet.last_name %></td>
+            <td class="text-center"><%= owner_debet.middle_name %></td>
+            <td class="text-center"><%= owner_debet.email %></td>
+            <td class="text-center"><%= owner_debet.city %></td>
+            <td class="text-center"><%= owner_debet.street %></td>
+            <td class="text-center"><%= owner_debet.house_no %></td>
+            <td class="text-center"><%= owner_debet.apartment_no %></td>
+            <td class="text-center"><%= owner_debet.number_owners %></td>
+            <td class="text-center"><%= owner_debet.phone %></td>
+            <time><td class="text-center"><%= owner_debet.subscriber_blocking_date&.to_date&.strftime("%d.%m.%y") %></td></time>
+            <time><td class="text-center"><%= owner_debet.home_activation_date&.to_date&.strftime("%d.%m.%y") %></td></time>
+            <td class="text-center"><%= owner_debet.serial_number %></td>
+            <td class="text-center"><%= owner_debet.contractor %></td>
+            <td class="text-center"><%= owner_debet.personal_account %></td>
+            <td class="text-center">
+              <%= link_to fa_icon('pencil'), edit_register_of_owner_path(owner_debet), class: 'btn btn-info btn-sm' %>
+              <%= link_to fa_icon('trash-o'), owner_debet, data: { turbo_method: "delete", turbo_confirm: "Вы уверены?" }, class: 'btn btn-danger btn-sm' %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>

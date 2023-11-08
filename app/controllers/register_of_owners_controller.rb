@@ -60,10 +60,7 @@ class RegisterOfOwnersController < ApplicationController
   def import
     if params[:statement].present?
       @owner_list = ImportService.call params[:statement]
-      flash[:success] ="#{@owner_list.count} cовпадений найдены"
-      redirect_to action: "index"
-    else
-      render :import, status: :unprocessable_entity
+      flash[:success] = "Найдено #{@owner_list&.count} собстыенников с задолженностью"
     end
   end
 
@@ -72,7 +69,7 @@ class RegisterOfOwnersController < ApplicationController
   def register_of_owner_params
     params.require(:register_of_owner).permit(:first_name, :last_name, :middle_name, :personal_account, :city, :street,
                                               :house_no, :apartment_no, :number_owners, :phone, :email, :home_activation_date,
-                                              :subscriber_blocking_date, :serial_number, :contractor, :search, scans: [])
+                                              :subscriber_blocking_date, :serial_number, :contractor, :statement, :search, scans: [])
   end
 
   def find_register_of_owner
