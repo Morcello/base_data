@@ -18,18 +18,20 @@ class ImportService < ApplicationService
 
       @debt_kvc = user_data["Дебет"].to_i
       @personal_account_kvc = user_data["Лицевой счет"].to_i
-      @owner_info_kvc << {personal_account: @personal_account_kvc, debtor: true}
+#      @owner_info_kvc << {personal_account: @personal_account_kvc, debtor: true}
+      @owner_info_kvc << {personal_account: @personal_account_kvc}
     end
 
     @owner_list = []
 
     @owner_info_kvc.map do |value|
-      owner = RegisterOfOwner.where(debtor: false, personal_account: value[:personal_account])
+      owner = RegisterOfOwner.where(personal_account: value[:personal_account])
       @owner_list << owner if owner.present?
     end
 
     @owner_list
   end
+end
 
   # def call
   #   sheet = Roo::Spreadsheet.open(@path, extension: :xlsx)
@@ -77,4 +79,4 @@ class ImportService < ApplicationService
   #   RegisterOfOwner.create(owner_list).transaction do
   #   end
   # end
-end
+#end
