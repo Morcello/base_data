@@ -25,7 +25,7 @@ class ImportService < ApplicationService
     @owner_list = []
 
     @owner_info_kvc.map do |value|
-      owner = RegisterOfOwner.where(personal_account: value[:personal_account])
+      owner = RegisterOfOwner.find_by(personal_account: value[:personal_account])
       @owner_list << owner if owner.present?
     end
 

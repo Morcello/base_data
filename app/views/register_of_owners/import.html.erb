@@ -47,30 +47,7 @@
     </thead>
     <% if params[:statement] %>
       <tbody>
-        <% @owner_list.each do |owner_debet| %>
-          <tr>
-            <th class="text-center" scope="row"><%= owner_debet.id %></th>
-            <td class="text-center"><%= owner_debet.first_name %></td>
-            <td class="text-center"><%= owner_debet.last_name %></td>
-            <td class="text-center"><%= owner_debet.middle_name %></td>
-            <td class="text-center"><%= owner_debet.email %></td>
-            <td class="text-center"><%= owner_debet.city %></td>
-            <td class="text-center"><%= owner_debet.street %></td>
-            <td class="text-center"><%= owner_debet.house_no %></td>
-            <td class="text-center"><%= owner_debet.apartment_no %></td>
-            <td class="text-center"><%= owner_debet.number_owners %></td>
-            <td class="text-center"><%= owner_debet.phone %></td>
-            <time><td class="text-center"><%= owner_debet.subscriber_blocking_date&.to_date&.strftime("%d.%m.%y") %></td></time>
-            <time><td class="text-center"><%= owner_debet.home_activation_date&.to_date&.strftime("%d.%m.%y") %></td></time>
-            <td class="text-center"><%= owner_debet.serial_number %></td>
-            <td class="text-center"><%= owner_debet.contractor %></td>
-            <td class="text-center"><%= owner_debet.personal_account %></td>
-            <td class="text-center">
-              <%= link_to fa_icon('pencil'), edit_register_of_owner_path(owner_debet), class: 'btn btn-info btn-sm' %>
-              <%= link_to fa_icon('trash-o'), owner_debet, data: { turbo_method: "delete", turbo_confirm: "Вы уверены?" }, class: 'btn btn-danger btn-sm' %>
-            </td>
-          </tr>
-        <% end %>
+        <%= render 'owner', register_of_owners: @owner_list %>
       </tbody>
     </table>
   <% end %>
