@@ -1,0 +1,19 @@
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: "Debt_owner") do |sheet|
+  sheet.add_row ["ID" owner.id]
+  sheet.add_row ["Имя" owner.first_name]
+  sheet.add_row ["Фамилия" owner.last_name]
+  sheet.add_row ["Отчество" middle_name]
+  sheet.add_row ["Email" owner.email]
+  sheet.add_row ["Город" owner.city]
+  sheet.add_row ["Улица" owner.street]
+  sheet.add_row ["Дом №" owner.house_no]
+  sheet.add_row ["Квартира №" owner.apartment_no]
+  sheet.add_row ["Кол-во соб." owner.number_owners]
+  sheet.add_row ["Дата блок." owner.subscriber_blocking_date]
+  sheet.add_row ["Дата актив." owner.home_activation_date]
+  sheet.add_row ["Серийный №" owner.serial_number]
+  sheet.add_row ["Подрядчик" owner.contractor]
+  sheet.add_row ["Лицевой счет" owner.personal_account]
+end

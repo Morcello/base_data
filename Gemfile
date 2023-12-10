@@ -50,6 +50,9 @@ gem 'will_paginate-bootstrap'
 
 # Roo implements read access for all common spreadsheet types. It can handle: Excel(xlsx, xlsm), xls, xml, CSV
 gem "roo", "~> 2.10.0"
+gem "rubyzip"
+gem "caxlsx"
+gem "caxlsx_rails"
 
 # Use Sass to process CSS
 # gem "sassc-rails"

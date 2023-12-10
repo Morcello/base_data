@@ -60,7 +60,17 @@ class RegisterOfOwnersController < ApplicationController
   def import
     if params[:statement].present?
       @owner_list = ImportService.call params[:statement]
-      flash[:success] = "Найдено #{@owner_list&.count} собстыенников с задолженностью"
+      flash[:success] = "Найдено #{@owner_list&.count} собстыенников... Щука... Жеванный крот... O_O"
+    end
+  end
+
+  def export
+    respond_to do |format|
+       format.html do
+         @owner_list = ImportService.call params[:statement]
+       end
+
+      format.zip { respond_with_zipped_owners }
     end
   end
 
@@ -87,5 +97,18 @@ class RegisterOfOwnersController < ApplicationController
 
       RegisterOfOwner.create(personal_account: row[:personal_account])
     end
+  end
+
+  def respond_with_zipped_owners
+    compressed_filestream = Zip::OutputStream.write_buffer do |zos|
+      zos.print render_to_string(
+        layout: false, handlers: [:axlsx], formats: [:xlsx],
+        template: 'register_of_owners/import',
+        locals: {debt_owner: debt_owner}
+      )
+    end
+
+    compressed_filestream.rewind
+    send_data compressed_filestream.read, filename: 'debt_owner.zip'
   end
 end

@@ -12,42 +12,47 @@
       </p>
       <div class="btn-group">
         <div class="actions">
-          <%= f.submit "Найти", class: 'btn btn-success btn-sm', data: { turbolinks: false } %>
-          <%= link_to register_of_owners_path do %>
-            <button class="btn btn-success btn-sm">Назад</button>
+          <%= turbo_frame_tag "new_access" do %>
+            <%= f.submit "Найти", class: 'btn btn-success btn-sm', data: { turbolinks: false } %>
+            <%= link_to register_of_owners_path, data: { format: :turbo_stream } do %>
+              <button class="btn btn-success btn-sm">Назад</button>
+            <% end %>
           <% end %>
         </div>
       </div>
     <% end %>
   </table>
-
-  <table class="table caption-top">
-    <caption></caption>
-    <thead class="table-light">
-      <tr>
-        <th class="text-center" scope="col">ID</th>
-        <th class="text-center" scope="col">Имя</th>
-        <th class="text-center" scope="col">Фамилия</th>
-        <th class="text-center" scope="col">Отчество</th>
-        <th class="text-center" scope="col">Email</th>
-        <th class="text-center" scope="col">Город</th>
-        <th class="text-center" scope="col">Улица</th>
-        <th class="text-center" scope="col">Д.№</th>
-        <th class="text-center" scope="col">Кв. №</th>
-        <th class="text-center" scope="col">Кол. соб.</th>
-        <th class="text-center" scope="col">Телефон</th>
-        <th class="text-center" scope="col">Д.выдачи. доступа</th>
-        <th class="text-center" scope="col">Д.Блок. абонента</th>
-        <th class="text-center" scope="col">Сер. №</th>
-        <th class="text-center" scope="col">Подрядчик</th>
-        <th class="text-center" scope="col">Лиц. Счет</th>
-        <th class="text-center" scope="col">Действия:</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-    <% if params[:statement] %>
-      <tbody>
-        <%= render 'owner', register_of_owners: @owner_list %>
-      </tbody>
-    </table>
+  <% if params[:statement] %>
+    <table class="table caption-top">
+      <caption></caption>
+      <thead class="table-light">
+        <tr>
+          <th class="text-center" scope="col">ID</th>
+          <th class="text-center" scope="col">Имя</th>
+          <th class="text-center" scope="col">Фамилия</th>
+          <th class="text-center" scope="col">Отчество</th>
+          <th class="text-center" scope="col">Email</th>
+          <th class="text-center" scope="col">Город</th>
+          <th class="text-center" scope="col">Улица</th>
+          <th class="text-center" scope="col">Д.№</th>
+          <th class="text-center" scope="col">Кв. №</th>
+          <th class="text-center" scope="col">Кол. соб.</th>
+          <th class="text-center" scope="col">Телефон</th>
+          <th class="text-center" scope="col">Д.Блок. абонента</th>
+          <th class="text-center" scope="col">Д.выдачи. доступа</th>
+          <th class="text-center" scope="col">Сер. №</th>
+          <th class="text-center" scope="col">Подрядчик</th>
+          <th class="text-center" scope="col">Лиц. Счет</th>
+          <th class="text-center" scope="col">Действия:</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+        <tbody>
+          <%= render 'owner', register_of_owners: @owner_list %>
+        </tbody>
+      </table>
   <% end %>
+
+  <div class="btn-group mb-3">
+    <%= link_to 'Download zipped XLSX', register_of_owners_path(format: :zip), class: 'btn btn-success btn-sm' %>
+  </div>
