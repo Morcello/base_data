@@ -10,11 +10,11 @@ class RegisterOfOwner < ApplicationRecord
   validates :street, presence: true, length: { minimum: 3 }
   validates :house_no, presence: true, length: { minimum: 1 }
   validates :apartment_no, presence: true, length: { minimum: 1 }
-  validates :number_owners, presence: true, length: { minimum: 1 }
+  validates :number_owners, presence: false
   validates :phone, presence: true, length: { minimum: 3 }
   validates :email, presence: true, length: { minimum: 3 }
-  validates :home_activation_date, presence: true, length: { minimum: 3 }
-  validates :subscriber_blocking_date, presence: true, length: { minimum: 3 }
-  validates :serial_number, presence: true, length: { minimum: 3 }
-  validates :contractor, presence: true, length: { minimum: 3 }
+  validates :home_activation_date, presence: false
+  validates :subscriber_blocking_date, presence: false
+  validates :serial_number, presence: false
+  validates :contractor, presence: false
 end

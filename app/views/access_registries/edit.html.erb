@@ -20,13 +20,13 @@
           <p class="mb-sm text-red">
             <div class="field">
               <%= f.label "Дата поступления заявления" %><br />
-              <%= f.date_select :date_application, autocomplete: "date_application" %>
+              <%= f.date_field :date_application, autocomplete: "date_application" %>
             </div>
           </p>
           <p class="mb-sm text-red">
             <div class="field">
               <%= f.label "Дата выдачи" %><br />
-              <%= f.date_select :date_issue, autocomplete: "date_issue" %>
+              <%= f.date_field :date_issue, autocomplete: "date_issue" %>
             </div>
           </p>
           <div class="btn-group">

@@ -1,6 +1,17 @@
 <%= stylesheet_link_tag "register_of_owners", media: "all" %>
 <%= javascript_include_tag "application" %>
 
+<% if @register_of_owner.errors.full_messages.any? %>
+  <div class="alert alert-danger">
+    <ul class="mb-0">
+      <li>Все поля должны быть заполнены!!!</li>
+      <% @register_of_owner.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <section class="post-head">
   <img src="https://olan-video.ru/wp-content/uploads/2021/11/%D0%BB%D0%BE%D0%B3%D0%BE.svg" alt="" width="270" height="90" class="d-inline-block align-text-top">
   <h4 class="text-center">Хочу получить доступ к системе</h4>
