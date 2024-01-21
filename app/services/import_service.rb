@@ -29,15 +29,11 @@ class ImportService < ApplicationService
       @owner_list << owner if owner.present?
     end
 
-    @owner_list
-
-    @owner_status_debtor = []
-
     @owner_list.map do |value|
-      owner_ = RegisterOfOwner.find_by(personal_account: value[:personal_account])
-      @owner_status_debtor << owner_ if owner_.present?
+      value.debtor = true
     end
 
-    @owner_status_debtor
+    byebug
+
   end
 end
