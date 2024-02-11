@@ -48,6 +48,8 @@ gem "bootsnap", require: false
 gem 'will_paginate', '~> 3.3'
 gem 'will_paginate-bootstrap'
 
+gem 'turbolinks'
+
 # Roo implements read access for all common spreadsheet types. It can handle: Excel(xlsx, xlsm), xls, xml, CSV
 gem "roo", "~> 2.10.0"
 gem "rubyzip"

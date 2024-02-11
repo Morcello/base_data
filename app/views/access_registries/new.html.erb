@@ -18,7 +18,7 @@
           <%= form_for @access_registrу do |f| %>
             <div class="span6">
               <h6>Выбор собственника<h6>
-              <%= f.select :register_of_owners_id, RegisterOfOwner.all.collect { |owner|  ["#{owner.id}, #{owner.last_name},  #{owner.middle_name}"]  } %>
+              <%= f.select :register_of_owners_id, RegisterOfOwner.all.map { |owner| ["#{owner.id}", "#{owner.last_name}, #{owner.middle_name}"] } %>
             </div>
             <div class="row g-3">
               <div class="col">
@@ -50,9 +50,7 @@
             <div class="btn-group">
               <div class="actions">
                 <%= f.submit "Создать доступ", class: 'btn btn-success btn-sm', data: { turbolinks: false } %>
-                <%= link_to access_registries_path(@access_registrу, format: :turbo_stream) do %>
-                  <button class="btn btn-success btn-sm">Назад</button>
-                <% end %>
+                <%= link_to "Назад", access_registries_path, class: 'btn btn-success btn-sm', 'data-turbolinks': 'false' %>
               </div>
             </div>
           <% end %>

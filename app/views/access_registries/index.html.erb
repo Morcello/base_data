@@ -3,7 +3,7 @@
   <div class="btn-group btn-group-justified" role="group">
     <%= turbo_frame_tag "new_access" do %>
       <div class="btn-group" role="group">
-        <button type="button" class="btn btn-default"><%= link_to 'Новый доступ', new_access_registry_path, data: { format: :turbo_stream }, class: 'btn btn-success btn-sm' %></button>
+        <button type="button" class="btn btn-default"><%= link_to 'Новый доступ', new_access_registry_path, data: { turbolinks: "true" }, class: 'btn btn-success btn-sm' %></button>
       </div>
     <% end %>
   </div>

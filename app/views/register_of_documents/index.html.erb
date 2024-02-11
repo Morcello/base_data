@@ -22,11 +22,11 @@
         <td class="text-center"><%= doc.city %></td>
         <td class="text-center"><%= doc.street %></td>
         <td class="text-center"><%= doc.house_no %></td>
+
         <td class="text-center">
           <%= doc.datascans.each do |scan| %>
-              <%byebug%>
-              <%= link_to 'download', rails_blob_path(scan, disposition: "attachment") %>
-          <%end%>
+            <%= link_to 'download', rails_blob_path(scan, disposition: "attachment") %>
+          <% end %>
         </td>
         <td class="text-center"
           <div class="d-grid gap-2 d-md-flex justify-content-md-end" role="group">
