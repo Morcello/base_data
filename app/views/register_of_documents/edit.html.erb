@@ -1,45 +1,37 @@
-<article @class="post">
-  <sectio class="post-head">
-    <h6>Редактирование информации</h6>
-  </sectio>
+<article class="post">
+  <section class="post-head">
+    <h4>Редактирование информации</h4>
+  </section>
 
   <section class="post-summary">
     <small>
-      <table>
-        <tbody>
-          <%= form_for @register_of_document do |f| %>
-            <div class="row g-3">
-              <div class="col">
-                <label for="inputEmail4" class="form-label">Город</label>
-                <input type="text" class="form-control" placeholder="Город" <%= f.text_field :city, autocomplete: "city" %></input>
-              </div>
-
-              <div class="col">
-                <label for="inputEmail4" class="form-label">Улица</label>
-                <input type="text" class="form-control" placeholder="Улица" <%= f.text_field :street, autocomplete: "street" %></input>
-              </div>
-
-              <div class="col">
-                <label for="inputEmail4" class="form-label">Дои №</label>
-                <input type="text" class="form-control" placeholder="Дои №" <%= f.text_field :house_no, autocomplete: "house_no" %></input>
-              </div>
-            </div>
-
-            <p class="mb-sm text-red">
-              <div class="field">
-                <%= f.label "Документы" %><br />
-                <%= f.file_field :datascans %>
-              </div>
-            </p>
-            <div class="btn-group">
-              <div class="actions">
-                <%= f.submit "Изменить", class: 'btn btn-success btn-sm', data: { turbolinks: 'false' } %>
-                <%= link_to "Назад", register_of_documents_path, class: 'btn btn-success btn-sm', 'data-turbolinks': 'false' %>
-              </div>
-            </div>
+      <%= form_for @register_of_document do |f| %>
+        <div class="row g-3">
+          <div class="col">
+            <label for="city" class="form-label">Город</label>
+            <%= f.text_field :city, class: "form-control", id: "city", autocomplete: "city", placeholder: "Город" %>
+          </div>
+          <div class="col">
+            <label for="street" class="form-label">Улица</label>
+            <%= f.text_field :street, class: "form-control", id: "street", autocomplete: "street", placeholder: "Улица" %>
+          </div>
+          <div class="col">
+            <label for="house_no" class="form-label">Дом №</label>
+            <%= f.text_field :house_no, class: "form-control", id: "house_no", autocomplete: "house_no", placeholder: "Дом №" %>
+          </div>
+        </div>
+        <div class="mb-3">
+          <%= f.label :datascans, class: "form-label" do %>
+            Документы <%= f.file_field :datascans, class: "form-control" %>
           <% end %>
-        </tbody>
-      </table>
+        </div>
+        <div class="btn-group">
+          <div class="actions">
+            <%= f.submit "Добавить", class: "btn btn-success btn-sm", data: { turbolinks: false } %>
+            <%= link_to "Назад", register_of_documents_path, class: "btn btn-success btn-sm ms-2", 'data-turbolinks': 'false' %>
+          </div>
+        </div>
+      <% end %>
     </small>
   </section>
 </article>

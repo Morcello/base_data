@@ -1,18 +1,21 @@
-<div class="table-responsive">
+<div class="container">
   <h4 class="text-center">Реестор собственников</h4>
+
   <div class="btn-group btn-group-justified" role="group">
     <div class="btn-group" role="group">
       <button type="button" class="btn btn-default"><%= link_to 'Добавить собственника', new_register_of_owner_path, class: 'btn btn-success btn-sm' %></button>
     </div>
   </div>
+
   <div class="container-fluid">
     <form class="d-flex">
       <%= form_tag register_of_owners_path, :method => 'get' do %>
-        <%= text_field_tag :search, params[:search], class: "form-control me-2", placeholder: "Введите Улицу и Д.№ без пробела пример: Пшенична7, или выполние поиск по подрядчику" %>
+        <%= text_field_tag :search, params[:search], class: "form-control me-2", placeholder: "Введите улицу и д.№ без пробела (например: Пшенична7) или выполните поиск по подрядчику" %>
         <%= submit_tag "Поиск", class: 'btn btn-success btn-sm' %>
       <% end %>
     </form>
   </div>
+
   <table class="table caption-top">
     <caption></caption>
     <thead class="table-light">
@@ -42,6 +45,7 @@
       <%= render 'owner', register_of_owners: @register_of_owners %>
     </tbody>
   </table>
+
   <div class="pagination justify-content-center">
     <%= will_paginate @register_of_owners, renderer: BootstrapPagination::Rails %>
   </div>

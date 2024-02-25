@@ -15,8 +15,10 @@ class RegisterOfDocumentsController < ApplicationController
     @register_of_document.datascans.attach(register_of_document_params[:datascans])
 
     if @register_of_document.save!
+      flash[:notice] = "Документ был успешно создан!"
       redirect_to action: "index"
     else
+      flash.now[:alert] = "Не удалось создать документ."
       render :new, status: :unprocessable_entity
     end
   end
@@ -28,8 +30,10 @@ class RegisterOfDocumentsController < ApplicationController
     @register_of_document.datascans.attach(register_of_document_params[:datascans])
 
     if @register_of_document.update(register_of_document_params)
+      flash[:notice] = "Документ успешно обновлен!"
       redirect_to action: "index"
     else
+      flash.now[:alert] = "Не удалось обновить документ."
       render :edit
     end
   end
@@ -39,10 +43,12 @@ class RegisterOfDocumentsController < ApplicationController
 
   def destroy
     if @register_of_document.destroy
-      redirect_to action: "index"
+      flash[:notice] = "Документ был успешно удален!"
     else
-      render :index, status: :unprocessable_entity
+      flash[:alert] = "Не удалось удалить документ."
     end
+
+    redirect_to action: "index"
   end
 
   private
