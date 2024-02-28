@@ -7,7 +7,7 @@ class ImportService < ApplicationService
 
   def call
     data = Roo::Spreadsheet.open(@statement.path, extension: :xlsx)
-    @owner_info_kvc = []
+    owner_info_kvc = []
 
     headers = data.row(1)
     data.each_with_index do |row, idx|
@@ -17,19 +17,31 @@ class ImportService < ApplicationService
       next if user_data["Дебет"].to_i.zero?
 
       @debt_kvc = user_data["Дебет"].to_i
-      @personal_account_kvc = user_data["Лицевой счет"].to_i
-      @owner_info_kvc << { personal_account: @personal_account_kvc, debtor: true }
+      personal_account_kvc = user_data["Лицевой счет"].to_i
+      #@owner_info_kvc << { personal_account: @personal_account_kvc, debtor: true }
+      #зачем нам массив хэшей, если все это затеяно ради списка просто
+      owner_info_kvc << personal_account_kvc
     end
 
-    @owner_list = []
 
-    @owner_info_kvc.each do |value|
-      owner = RegisterOfOwner.find_by(personal_account: value[:personal_account])
-      @owner_list << owner if owner.present?
-    end
+    @owner_list = get_debtors(owner_info_kvc)
 
-    @owner_list.each do |value|
-      value.debtor = true
+  end
+
+  private
+
+  def get_debtors(owners_personal_accounts)
+    debt_owners = []
+    RegisterOfOwner.all.each do |owner|
+      if owners_personal_accounts.include?(owner.personal_account) && owner.debtor == false
+        owner.debtor = true
+        owner.save!
+        debt_owners << owner
+      elsif  !owners_personal_accounts.include?(owner.personal_account) && owner.debtor == true
+        owner.debtor = false
+        owner.save!
+      end
+      debt_owners
     end
   end
 end
