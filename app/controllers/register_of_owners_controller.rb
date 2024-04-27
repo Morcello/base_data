@@ -64,6 +64,16 @@ class RegisterOfOwnersController < ApplicationController
     end
   end
 
+  # def import
+  #   if params[:statement].present?
+  #     service = ImportService.new(params[:statement])
+  #     service.call
+  #     @owner_list = RegisterOfOwner.all
+  #     flash[:success] = "Обработка завершена. Найдено #{@owner_list&.count}"
+  #   end
+  # end
+
+
   private
 
   def register_of_owner_params
