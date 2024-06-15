@@ -1,0 +1,45 @@
+<div class="container">
+  <h4 class="text-center">Реестр документов</h4>
+
+  <div class="btn-group d-flex justify-content-center mb-3" role="group">
+    <%= link_to 'Добавить адрес', new_register_of_document_path, class: 'btn btn-success btn-sm' %>
+  </div>
+
+  <table class="table caption-top">
+    <thead class="table-light">
+      <tr>
+        <th class="text-center" scope="col">ID</th>
+        <th class="text-center" scope="col">Город</th>
+        <th class="text-center" scope="col">Улица</th>
+        <th class="text-center" scope="col">Дом №</th>
+        <th class="text-center" scope="col">Сканы</th>
+        <th class="text-center" scope="col">Действие</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @register_of_documents.each do |doc| %>
+        <tr>
+          <td class="text-center"><%= doc.id %></td>
+          <td class="text-center"><%= doc.city %></td>
+          <td class="text-center"><%= doc.street %></td>
+          <td class="text-center"><%= doc.house_no %></td>
+          <td class="text-center">
+            <% doc.datascans.each do |scan| %>
+              <%= link_to 'download', rails_blob_path(scan, disposition: "attachment") %><br>
+            <% end %>
+          </td>
+          <td class="text-center">
+            <div class="btn-group" role="group">
+              <%= link_to fa_icon('pencil'), edit_register_of_document_path(doc), class: 'btn btn-info btn-sm' %>
+              <%= link_to fa_icon('trash-o'), doc, data: { turbo_method: "delete", turbo_confirm: "Вы уверены?" }, class: 'btn btn-danger btn-sm' %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <div class="pagination justify-content-center">
+    <%= will_paginate @register_of_documents, renderer: BootstrapPagination::Rails %>
+  </div>
+</div>

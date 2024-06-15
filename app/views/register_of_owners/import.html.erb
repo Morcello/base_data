@@ -1,0 +1,52 @@
+<div class="table-responsive">
+  <section class="post-head">
+    <h4 class="text-center">Поиск задолжностей по Л/С</h4>
+  </section>
+
+  <table class="table caption-top">
+    <%= form_with url: register_of_owners_import_path, local: true do |f| %>
+      <p class="mb-sm text-red">
+        <div class="field">
+          <%= f.label "Ведомость" %><br />
+          <%= f.file_field :statement, class: 'btn btn-success btn-sm' %>
+        </div>
+      </p>
+      <div class="btn-group">
+        <div class="actions">
+          <%= f.submit "Найти", class: 'btn btn-success btn-sm', data: { turbo: false } %>
+          <%= link_to "Назад", register_of_owners_path, class: 'btn btn-success btn-sm', data: { turbo: true } %>
+        </div>
+      </div>
+    <% end %>
+  </table>
+
+  <% if params[:statement] %>
+    <table class="table caption-top">
+      <caption></caption>
+      <thead class="table-light">
+        <tr>
+          <th class="text-center" scope="col">ID</th>
+          <th class="text-center" scope="col">Город</th>
+          <th class="text-center" scope="col">Улица</th>
+          <th class="text-center" scope="col">Д. №</th>
+          <th class="text-center" scope="col">Кв. №</th>
+          <th class="text-center" scope="col">Лиц. Счет</th>
+          <th class="text-center" scope="col">Подрядчик</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @owner_list.each do |owner| %>
+          <tr>
+            <td class="text-center" scope="row"><%= owner.id %></td>
+            <td class="text-center"><%= owner.city %></td>
+            <td class="text-center"><%= owner.street %></td>
+            <td class="text-center"><%= owner.house_no %></td>
+            <td class="text-center"><%= owner.apartment_no %></td>
+            <td class="table-danger text-center"><%= link_to owner.personal_account, register_of_owners_path%></td>
+            <td class="text-center"><%= owner.contractor %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>

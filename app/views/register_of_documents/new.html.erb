@@ -1,0 +1,37 @@
+<article class="post">
+  <section class="post-head">
+    <h4>Добавить адрес дома</h4>
+  </section>
+
+  <section class="post-summary">
+    <small>
+      <%= form_for @register_of_document do |f| %>
+        <div class="row g-3">
+          <div class="col">
+            <label for="city" class="form-label">Город</label>
+            <%= f.text_field :city, class: "form-control", id: "city", autocomplete: "city", placeholder: "Город" %>
+          </div>
+          <div class="col">
+            <label for="street" class="form-label">Улица</label>
+            <%= f.text_field :street, class: "form-control", id: "street", autocomplete: "street", placeholder: "Улица" %>
+          </div>
+          <div class="col">
+            <label for="house_no" class="form-label">Дом №</label>
+            <%= f.text_field :house_no, class: "form-control", id: "house_no", autocomplete: "house_no", placeholder: "Дом №" %>
+          </div>
+        </div>
+        <div class="mb-3">
+          <%= f.label :datascans, class: "form-label" do %>
+            Документы <%= f.file_field :datascans, class: "form-control" %>
+          <% end %>
+        </div>
+        <div class="btn-group">
+          <div class="actions">
+            <%= f.submit "Добавить", class: "btn btn-success btn-sm", data: { turbolinks: false } %>
+            <%= link_to "Назад", register_of_documents_path, class: "btn btn-success btn-sm ms-2", 'data-turbolinks': 'false' %>
+          </div>
+        </div>
+      <% end %>
+    </small>
+  </section>
+</article>

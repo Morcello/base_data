@@ -1,19 +1,7 @@
-<%= stylesheet_link_tag "register_of_owners", media: "all" %>
-<%= javascript_include_tag "application" %>
-
 <section class="post-head">
-  <h4 class="text-center">Добавить собственника</h4>
+  <h4>РЕДАКТИРОВАНИЕ ПОЛЕЙ</h4>
 </section>
-<% if @register_of_owner.errors.full_messages.any? %>
-  <div class="alert alert-danger">
-    <ul class="mb-0">
-      <li>Все поля должны быть заполнены!!!</li>
-      <% @register_of_owner.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+
 <section class="post-summary">
   <small>
     <table>
@@ -67,8 +55,8 @@
               <input type="text" class="form-control" placeholder="Телефон" <%= f.text_field :phone, autocomplete: "phone" %></input>
             </div>
             <div class="col">
-              <label for="inputEmail4" class="form-label">@email</label>
-              <input type="text" class="form-control" placeholder="@email" <%= f.email_field :email, autofocus: true, autocomplete: "email" %></input>
+              <label for="inputEmail4" class="form-label">@ email</label>
+              <input type="text" class="form-control" placeholder="@ email" <%= f.email_field :email, autofocus: true, autocomplete: "email" %></input>
             </div>
             <div class="col">
               <label for="inputEmail4" class="form-label">Серийный №</label>
@@ -79,28 +67,23 @@
               <input type="text" class="form-control" placeholder="Подрядчик" <%= f.text_field :contractor, autocomplete: "contractor" %></input>
             </div>
           </div>
-          <p class="mb-sm text-red">
-            <div class="field">
-              <%= f.label "Доступ" %><br />
-              <%= f.date_field :home_activation_date, autocomplete: "home_activation_date" %>
-            </div>
-          </p>
-          <div class="form-check form-switch">
+          <div class="field">
             <%= f.label "Дата блокировки абонента" %><br />
-            <input class="form-check-input" type="checkbox" name='form-check-input_date' value="" id="defaultCheck1">
-            <label class="form-check-label" name='date' for="defaultCheck1">
-              <%= f.date_field :subscriber_blocking_date, autocomplete: "subscriber_blocking_date" %>
-            </label>
+            <%= f.date_field :home_activation_date, autocomplete: "home_activation_date" %>
+          </div>
+          <div class="field">
+            <%= f.label "Доступ" %><br />
+            <%= f.date_field :subscriber_blocking_date, autocomplete: "subscriber_blocking_date" %>
           </div>
           <p class="mb-sm text-red">
             <div class="field">
               <%= f.label "Документы" %><br />
-              <%= f.file_field :scans, class: 'btn btn-success btn-sm' %>
+              <%= f.file_field :scans %>
             </div>
           </p>
           <div class="btn-group">
             <div class="actions">
-              <%= f.submit "Добавить", class: 'btn btn-success btn-sm', data: { turbolinks: false } %>
+              <%= f.submit "Изменить", class: 'btn btn-success btn-sm' %>
               <%= link_to "Назад", register_of_owners_path, class: 'btn btn-success btn-sm', 'data-turbolinks': 'false' %>
             </div>
           </div>

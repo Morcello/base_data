@@ -6,6 +6,8 @@ ruby "3.1.2"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.4"
 
+gem 'font-awesome-rails'
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
@@ -42,6 +44,18 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
+# will_paginate provides a simple API for performing paginated queries with Active Record
+gem 'will_paginate', '~> 3.3'
+gem 'will_paginate-bootstrap'
+
+gem 'turbolinks'
+
+# Roo implements read access for all common spreadsheet types. It can handle: Excel(xlsx, xlsm), xls, xml, CSV
+gem "roo", "~> 2.10.0"
+gem "rubyzip"
+gem "caxlsx"
+gem "caxlsx_rails"
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
@@ -50,6 +64,10 @@ gem "bootsnap", require: false
 
 # Use for authentication
 gem "devise", "~> 4.8.1"
+
+gem 'bootstrap', '~> 5.2.2'
+
+gem "image_processing", ">= 1.2"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -60,6 +78,7 @@ group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
   gem "byebug"
+  gem 'jquery-rails'
 end
 
 group :test do
@@ -68,3 +87,5 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem "cssbundling-rails"

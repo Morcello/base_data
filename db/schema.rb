@@ -10,20 +10,59 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_03_151202) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_29_130702) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "access_registrys", force: :cascade do |t|
+  create_table "access_registries", force: :cascade do |t|
     t.string "login", default: "", null: false
     t.string "password", default: "", null: false
     t.datetime "date_application", null: false
     t.datetime "date_issue", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "register_of_owners_id", null: false
-    t.index ["password"], name: "index_access_registrys_on_password", unique: true
-    t.index ["register_of_owners_id"], name: "index_access_registrys_on_register_of_owners_id"
+    t.bigint "register_of_owners_id"
+    t.index ["password"], name: "index_access_registries_on_password", unique: true
+    t.index ["register_of_owners_id"], name: "index_access_registries_on_register_of_owners_id"
+  end
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.string "service_name", null: false
+    t.bigint "byte_size", null: false
+    t.string "checksum"
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "active_storage_variant_records", force: :cascade do |t|
+    t.bigint "blob_id", null: false
+    t.string "variation_digest", null: false
+    t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "register_of_documents", force: :cascade do |t|
+    t.string "city", default: "", null: false
+    t.string "street", default: "", null: false
+    t.string "house_no", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["city"], name: "index_register_of_documents_on_city"
+    t.index ["house_no"], name: "index_register_of_documents_on_house_no"
+    t.index ["street"], name: "index_register_of_documents_on_street"
   end
 
   create_table "register_of_owners", force: :cascade do |t|
@@ -36,29 +75,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_03_151202) do
     t.string "street", default: "", null: false
     t.string "house_no", default: "", null: false
     t.integer "apartment_no", null: false
-    t.integer "number_owners", null: false
+    t.integer "number_owners"
     t.string "phone", default: "", null: false
-    t.datetime "home_activation_date", null: false
-    t.datetime "subscriber_blocking_date", null: false
-    t.string "contractor", default: "", null: false
-    t.string "serial_number", default: "", null: false
+    t.datetime "home_activation_date"
+    t.datetime "subscriber_blocking_date"
+    t.string "contractor", default: ""
+    t.string "serial_number", default: ""
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "debtor", default: false
+    t.boolean "condition", default: false
     t.index ["personal_account"], name: "index_register_of_owners_on_personal_account", unique: true
-  end
-
-  create_table "service_cancellations", force: :cascade do |t|
-    t.string "middle_name", default: "", null: false
-    t.string "first_name", default: "", null: false
-    t.string "last_name", default: "", null: false
-    t.datetime "date_rejection", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "register_of_owners_id", null: false
-    t.index ["first_name"], name: "index_service_cancellations_on_first_name", unique: true
-    t.index ["last_name"], name: "index_service_cancellations_on_last_name", unique: true
-    t.index ["middle_name"], name: "index_service_cancellations_on_middle_name", unique: true
-    t.index ["register_of_owners_id"], name: "index_service_cancellations_on_register_of_owners_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -76,6 +103,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_03_151202) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "access_registrys", "register_of_owners", column: "register_of_owners_id"
-  add_foreign_key "service_cancellations", "register_of_owners", column: "register_of_owners_id"
+  add_foreign_key "access_registries", "register_of_owners", column: "register_of_owners_id"
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
 end
