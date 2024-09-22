@@ -1,3 +1,15 @@
-// Custom bootstrap variables must be set or imported *before* bootstrap.
-@import "bootstrap";
-@import "font-awesome";
+@import "bootstrap/scss/bootstrap-reboot.scss";
+@import "bootstrap/scss/bootstrap-grid.scss";
+@import "bootstrap/scss/bootstrap-utilities.scss";
+@import "bootstrap/scss/bootstrap.scss";
+
+// TODO: Do we use this?
+// @import "font-awesome";
+
+// TODO: redefine correct color:
+$highlight: yellow;
+
+@import "./access_registries";
+@import "./main";
+@import "./register_of_documents";
+@import "./register_of_owners";

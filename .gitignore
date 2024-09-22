@@ -5,18 +5,16 @@
 #   git config --global core.excludesfile '~/.gitignore_global'
 
 .vscode
+*.local
 
 # Ignore bundler config.
 /.bundle
-
-# Ignore the default SQLite database.
-/db/*.sqlite3
-/db/*.sqlite3-journal
 
 # Ignore all logfiles and tempfiles.
 /log/*
 /log
 /tmp
+/tmp/*
 .byebug_history
 .irb_history
 /.vscode
@@ -39,7 +37,6 @@ Guardfile
 
 .idea/
 .rvmrc/
-.ruby-version/
 .ruby-gemset
 .ruby-version.02.06.2017-11:56:24
 .generators
