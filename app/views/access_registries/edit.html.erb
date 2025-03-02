@@ -1,0 +1,36 @@
+<section class="post-head">
+  <h4 class="text-center">Редактирование доступа</h4>
+</section>
+
+<section class="post-summary">
+  <%= form_for @access_registrу  do |f| %>
+    <div class="row g-3">
+      <div class="col">
+        <label for="inputEmail4" class="form-label">Login</label>
+        <input type="text" class="form-control" placeholder="Login" <%= f.text_field :login, autocomplete: "login" %></input>
+      </div>
+      <div class="col">
+        <label for="inputEmail4" class="form-label">Password</label>
+        <input type="text" class="form-control" placeholder="Password" <%= f.text_field :password, autocomplete: "password" %></input>
+      </div>
+    </div>
+    <p class="mb-sm text-red">
+      <div class="field">
+        <%= f.label "Дата поступления заявления" %><br />
+        <%= f.date_field :date_application, autocomplete: "date_application" %>
+      </div>
+    </p>
+    <p class="mb-sm text-red">
+      <div class="field">
+        <%= f.label "Дата выдачи" %><br />
+        <%= f.date_field :date_issue, autocomplete: "date_issue" %>
+      </div>
+    </p>
+    <div class="btn-group">
+      <div class="actions">
+        <%= f.submit "Изменить", class: 'btn btn-success btn-sm', data: { turbolinks: false } %>
+        <%= link_to "Назад", access_registries_path, class: 'btn btn-success btn-sm', 'data-turbolinks': 'false' %>
+      </div>
+    </div>
+  <% end %>
+</section>

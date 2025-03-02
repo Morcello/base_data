@@ -1,0 +1,52 @@
+<div class="container">
+  <h4 class="text-center">Реестор собственников</h4>
+
+  <div class="btn-group btn-group-justified" role="group">
+    <div class="btn-group" role="group">
+      <button type="button" class="btn btn-default"><%= link_to 'Добавить собственника', new_register_of_owner_path, class: 'btn btn-success btn-sm' %></button>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <form class="d-flex">
+      <%= form_tag register_of_owners_path, :method => 'get' do %>
+        <%= text_field_tag :search, params[:search], class: "form-control me-2", placeholder: "Введите улицу и д.№ без пробела (например: Пшенична7) или выполните поиск по подрядчику" %>
+        <%= submit_tag "Поиск", class: 'btn btn-success btn-sm' %>
+      <% end %>
+    </form>
+  </div>
+
+  <table class="table caption-top">
+    <caption></caption>
+    <thead class="table-light">
+      <tr>
+        <th class="text-center" scope="col">ID</th>
+        <th class="text-center" scope="col">Имя</th>
+        <th class="text-center" scope="col">Фамилия</th>
+        <th class="text-center" scope="col">Отчество</th>
+        <th class="text-center" scope="col">Email</th>
+        <th class="text-center" scope="col">Город</th>
+        <th class="text-center" scope="col">Улица</th>
+        <th class="text-center" scope="col">Д.№</th>
+        <th class="text-center" scope="col">Кв. №</th>
+        <th class="text-center" scope="col">Кол. соб.</th>
+        <th class="text-center" scope="col">Телефон</th>
+        <th class="text-center" scope="col">Д.выдачи. доступа</th>
+        <th class="text-center" scope="col">Д.Блок. абонента</th>
+        <th class="text-center" scope="col">Сер. №</th>
+        <th class="text-center" scope="col">Подрядчик</th>
+        <th class="text-center" scope="col">Лиц. Счет</th>
+        <th class="text-center" scope="col">Заявление</th>
+        <th class="text-center" scope="col">Действия:</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render 'owner', register_of_owners: @register_of_owners %>
+    </tbody>
+  </table>
+
+  <div class="pagination justify-content-center">
+    <%= will_paginate @register_of_owners, renderer: BootstrapPagination::Rails %>
+  </div>
+</div>

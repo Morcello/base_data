@@ -1,0 +1,55 @@
+<article @class="post">
+  <section class="post-head">
+    <h4>Создать/Выдать доступ</h4>
+  </section>
+
+  <% if @access_registrу.errors.any? %>
+    <div class="mt">
+      <% @access_registrу.full_messages.each do |message| %>
+        <p class="mb-sm text-red"><%= message %></p>
+      <% end %>
+    </div>
+  <% end %>
+
+  <section class="post-summary">
+    <%= form_for @access_registrу do |f| %>
+      <div class="span6">
+        <h6>Выбор собственника</h6>
+        <%= f.select :register_of_owners_id, RegisterOfOwner.all.map { |owner| ["#{owner.id}", "#{owner.last_name}, #{owner.middle_name}"] } %>
+      </div>
+      <div class="row g-3">
+        <div class="col">
+          <label for="inputEmail4" class="form-label">Login</label>
+          <input type="text" class="form-control" placeholder="Login" <%= f.text_field :login, autocomplete: "login" %></input>
+        </div>
+        <div class="col">
+          <label for="inputEmail4" class="form-label">Password</label>
+          <input type="text" class="form-control" placeholder="Password" <%= f.text_field :password, autocomplete: "password" %></input>
+        </div>
+      </div>
+      <p class="mb-sm text-red">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+          <label class="form-check-label" for="defaultCheck1">
+            <div class="field">
+              <%= f.label "Дата поступления заявления" %><br />
+              <%= f.date_field :date_application, autocomplete: "date_application" %>
+            </div>
+          </label>
+        </div>
+      </p>
+      <p class="mb-sm text-red">
+        <div class="field">
+          <%= f.label "Дата выдачи" %><br />
+          <%= f.date_field :date_issue, autocomplete: "date_issue" %>
+        </div>
+      </p>
+      <div class="btn-group">
+        <div class="actions">
+          <%= f.submit "Создать доступ", class: 'btn btn-success btn-sm', data: { turbolinks: false } %>
+          <%= link_to "Назад", access_registries_path, class: 'btn btn-success btn-sm', 'data-turbolinks': 'false' %>
+        </div>
+      </div>
+    <% end %>
+  </section>
+</article>

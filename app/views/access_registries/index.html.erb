@@ -1,0 +1,38 @@
+<table class="table caption-top">
+  <h4 class="text-center">Реестр выданных доступов</h4>
+  <div class="btn-group btn-group-justified" role="group">
+    <%= turbo_frame_tag "new_access" do %>
+      <div class="btn-group" role="group">
+        <button type="button" class="btn btn-default"><%= link_to 'Новый доступ', new_access_registry_path, data: { turbolinks: "true" }, class: 'btn btn-success btn-sm' %></button>
+      </div>
+    <% end %>
+  </div>
+  <thead class="table-light">
+    <tr>
+      <th class="text-center" scope="col">ID</th>
+      <th class="text-center" scope="col">Login</th>
+      <th class="text-center" scope="col">Password</th>
+      <th class="text-center" scope="col">Дата поступления</th>
+      <th class="text-center" scope="col">Дата выдачи</th>
+      <th class="text-center" scope="col">Действие</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @access_registries.each do |registry| %>
+      <tr>
+        <th class="text-center" scope="row"><%= registry.id %></th>
+        <td class="text-center"><%= registry.login %></td>
+        <td class="text-center"><%= registry.password %></td>
+        <td class="text-center"><%= registry.date_application.to_date.strftime("%d.%m.%y") %></td>
+        <td class="text-center"><%= registry.date_issue.to_date.strftime("%d.%m.%y") %></td>
+        <td class="text-center">
+          <%= link_to fa_icon('pencil'), edit_access_registry_path(registry), class: 'btn btn-info btn-sm' %>
+          <%= link_to fa_icon('trash-o'), registry, data: { turbo_method: "delete", turbo_confirm: "Вы уверены?" }, class: 'btn btn-danger btn-sm' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div class="pagination justify-content-center">
+  <%= will_paginate @access_registries, renderer: BootstrapPagination::Rails %>
+</div>

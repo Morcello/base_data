@@ -1,0 +1,93 @@
+<%= stylesheet_link_tag "register_of_owners", media: "all" %>
+<%= javascript_include_tag "application" %>
+
+<% if @register_of_owner.errors.full_messages.any? %>
+  <div class="alert alert-danger">
+    <ul class="mb-0">
+      <li>Все поля должны быть заполнены!!!</li>
+      <% @register_of_owner.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<section class="post-head">
+  <img src="https://olan-video.ru/wp-content/uploads/2021/11/%D0%BB%D0%BE%D0%B3%D0%BE.svg" alt="" width="270" height="90" class="d-inline-block align-text-top">
+  <h4 class="text-center">Хочу получить доступ к системе</h4>
+</section>
+<p class="mb-sm text-red">
+  <a href="https://olan-video.ru/wp-content/uploads/2023/01/Заявление_на_получение_доступа_ОЛАН_универсальное.pdf" class="btn text-white btn-sm" style="background-color: #6f42c1;" role="button" data-bs-toggle="button">Скачать бланк заявления для получение доступа</a>
+</p>
+<section class="post-summary">
+  <small>
+    <table>
+      <tbody>
+        <%= form_for @register_of_owner do |form| %>
+          <div class="row g-3">
+            <div class="col">
+              <label for="inputEmail4" class="form-label">Имя владельца</label>
+              <input type="text" class="form-control" placeholder="Имя" <%= form.text_field :first_name, autocomplete: "first_name" %></input>
+            </div>
+            <div class="col">
+              <label for="inputEmail4" class="form-label">Фамилия владельца</label>
+              <input type="text" class="form-control" placeholder="Фамилия" <%= form.text_field :last_name, autocomplete: "last_name" %></input>
+            </div>
+            <div class="col">
+              <label for="inputEmail4" class="form-label">Отчество владельца</label>
+              <input type="text" class="form-control" placeholder="Отчество" <%= form.text_field :middle_name, autocomplete: "middle_name" %></input>
+            </div>
+          </div>
+          <div class="row g-3">
+            <div class="col">
+              <label for="inputEmail4" class="form-label">Лицевой счет</label>
+              <input type="text" class="form-control" placeholder="Номер лицевого счета размещен в квитанции" <%= form.text_field :personal_account, autocomplete: "personal_account" %></input>
+            </div>
+            <div class="col">
+              <label for="inputEmail4" class="form-label">Город</label>
+              <input type="text" class="form-control" placeholder="Город" <%= form.text_field :city, autocomplete: "city" %></input>
+            </div>
+            <div class="col">
+              <label for="inputEmail4" class="form-label">Улица</label>
+              <input type="text" class="form-control" placeholder="Улица" <%= form.text_field :street, autocomplete: "street" %></input>
+            </div>
+          </div>
+          <div class="row g-3">
+            <div class="col">
+              <label for="inputEmail4" class="form-label">Дом №</label>
+              <input type="text" class="form-control" placeholder="Дом №" <%= form.text_field :house_no, autocomplete: "house_no" %></input>
+            </div>
+            <div class="col">
+              <label for="inputEmail4" class="form-label">Квартира №</label>
+              <input type="text" class="form-control" placeholder="Квартира №" <%= form.text_field :apartment_no, autocomplete: "apartment_no" %></input>
+            </div>
+          </div>
+          <div class="row g-3">
+            <div class="col">
+              <label for="inputEmail4" class="form-label">Телефон</label>
+              <input type="text" class="form-control" placeholder="Телефон" <%= form.text_field :phone, autocomplete: "phone" %></input>
+            </div>
+            <div class="col">
+              <label for="inputEmail4" class="form-label">Укажите вашу почту</label>
+              <input type="text" class="form-control" placeholder="@email" <%= form.email_field :email, autofocus: true, autocomplete: "email" %></input>
+            </div>
+          </div>
+          <p class="mb-sm text-red">
+            <div class="field">
+              <%= form.label "Скан заявления" %><br />
+              <%= form.file_field :scans, class: 'form-control' %>
+            </div>
+          </p>
+          <div class="btn-group" style="background-color: #6f42c1;">
+            <div class="actions">
+              <%= form.submit "Отправить", class: 'btn text-white btn-sm', data: { turbolinks: false } %>
+            </div>
+          </div>
+        <% end %>
+      </tbody>
+    </table>
+  </small>
+  <p class="mb-sm text-red">
+    <p>Нажимая кнопку «отправить», вы даете свое согласие на обработку Ваших персональных данных в соответствии с №152-ФЗ «О персональных данных» от 27.07.2006. Оставляя заявку, Вы даете свое согласие на обработку Ваших персональных данных. Не является публичной офертой.</p>
+  </p>
+</section>
