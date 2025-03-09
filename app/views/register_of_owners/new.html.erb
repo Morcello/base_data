@@ -1,9 +1,7 @@
-<%= stylesheet_link_tag "register_of_owners", media: "all" %>
-<%= javascript_include_tag "application" %>
-
 <section class="post-head">
   <h4 class="text-center">Добавить собственника</h4>
 </section>
+
 <% if @register_of_owner.errors.full_messages.any? %>
   <div class="alert alert-danger">
     <ul class="mb-0">
@@ -14,98 +12,109 @@
     </ul>
   </div>
 <% end %>
+
 <section class="post-summary">
   <small>
-    <table>
-      <tbody>
-        <%= form_for @register_of_owner do |f| %>
-          <div class="row g-3">
-            <div class="col">
-              <label for="inputEmail4" class="form-label">Имя</label>
-              <input type="text" class="form-control" placeholder="Имя" <%= f.text_field :first_name, autocomplete: "first_name" %></input>
-            </div>
-            <div class="col">
-              <label for="inputEmail4" class="form-label">Фамилия</label>
-              <input type="text" class="form-control" placeholder="Фамилия" <%= f.text_field :last_name, autocomplete: "last_name" %></input>
-            </div>
-            <div class="col">
-              <label for="inputEmail4" class="form-label">Отчество</label>
-              <input type="text" class="form-control" placeholder="Отчество" <%= f.text_field :middle_name, autocomplete: "middle_name" %></input>
-            </div>
-          </div>
-          <div class="row g-3">
-            <div class="col">
-              <label for="inputEmail4" class="form-label">Лицевой счет</label>
-              <input type="text" class="form-control" placeholder="Лицевой счет" <%= f.text_field :personal_account, autocomplete: "personal_account" %></input>
-            </div>
-            <div class="col">
-              <label for="inputEmail4" class="form-label">Город</label>
-              <input type="text" class="form-control" placeholder="Город" <%= f.text_field :city, autocomplete: "city" %></input>
-            </div>
-            <div class="col">
-              <label for="inputEmail4" class="form-label">Улица</label>
-              <input type="text" class="form-control" placeholder="Улица" <%= f.text_field :street, autocomplete: "street" %></input>
-            </div>
-          </div>
-          <div class="row g-3">
-            <div class="col">
-              <label for="inputEmail4" class="form-label">Дом №</label>
-              <input type="text" class="form-control" placeholder="Дом №" <%= f.text_field :house_no, autocomplete: "house_no" %></input>
-            </div>
-            <div class="col">
-              <label for="inputEmail4" class="form-label">Квартира №</label>
-              <input type="text" class="form-control" placeholder="Квартира №" <%= f.text_field :apartment_no, autocomplete: "apartment_no" %></input>
-            </div>
-            <div class="col">
-              <label for="inputEmail4" class="form-label">Кол-во собственников</label>
-              <input type="text" class="form-control" placeholder="Кол-во собственников" <%= f.text_field :number_owners, autocomplete: "number_owners" %></input>
-            </div>
-          </div>
-          <div class="row g-3">
-            <div class="col">
-              <label for="inputEmail4" class="form-label">Телефон</label>
-              <input type="text" class="form-control" placeholder="Телефон" <%= f.text_field :phone, autocomplete: "phone" %></input>
-            </div>
-            <div class="col">
-              <label for="inputEmail4" class="form-label">@email</label>
-              <input type="text" class="form-control" placeholder="@email" <%= f.email_field :email, autofocus: true, autocomplete: "email" %></input>
-            </div>
-            <div class="col">
-              <label for="inputEmail4" class="form-label">Серийный №</label>
-              <input type="text" class="form-control" placeholder="Серийный №" <%= f.text_field :serial_number, autocomplete: "serial_number" %></input>
-            </div>
-            <div class="col">
-              <label for="inputEmail4" class="form-label">Подрядчик</label>
-              <input type="text" class="form-control" placeholder="Подрядчик" <%= f.text_field :contractor, autocomplete: "contractor" %></input>
-            </div>
-          </div>
-          <p class="mb-sm text-red">
-            <div class="field">
-              <%= f.label "Доступ" %><br />
-              <%= f.date_field :home_activation_date, autocomplete: "home_activation_date" %>
-            </div>
-          </p>
-          <div class="form-check form-switch">
-            <%= f.label "Дата блокировки абонента" %><br />
-            <input class="form-check-input" type="checkbox" name='form-check-input_date' value="" id="defaultCheck1">
-            <label class="form-check-label" name='date' for="defaultCheck1">
-              <%= f.date_field :subscriber_blocking_date, autocomplete: "subscriber_blocking_date" %>
-            </label>
-          </div>
-          <p class="mb-sm text-red">
-            <div class="field">
-              <%= f.label "Документы" %><br />
-              <%= f.file_field :scans, class: 'btn btn-success btn-sm' %>
-            </div>
-          </p>
-          <div class="btn-group">
-            <div class="actions">
-              <%= f.submit "Добавить", class: 'btn btn-success btn-sm', data: { turbolinks: false } %>
-              <%= link_to "Назад", register_of_owners_path, class: 'btn btn-success btn-sm', 'data-turbolinks': 'false' %>
-            </div>
-          </div>
-        <% end %>
-      </tbody>
-    </table>
+    <%= form_for @register_of_owner, html: { multipart: true } do |f| %>
+      <div class="row g-3">
+        <div class="col">
+          <%= f.label :first_name, "Имя", class: "form-label" %>
+          <%= f.text_field :first_name, class: "form-control", placeholder: "Имя" %>
+        </div>
+        <div class="col">
+          <%= f.label :last_name, "Фамилия", class: "form-label" %>
+          <%= f.text_field :last_name, class: "form-control", placeholder: "Фамилия" %>
+        </div>
+        <div class="col">
+          <%= f.label :middle_name, "Отчество", class: "form-label" %>
+          <%= f.text_field :middle_name, class: "form-control", placeholder: "Отчество" %>
+        </div>
+      </div>
+
+      <div class="row g-3">
+        <div class="col">
+          <%= f.label :personal_account, "Лицевой счет", class: "form-label" %>
+          <%= f.text_field :personal_account, class: "form-control", placeholder: "Лицевой счет" %>
+        </div>
+        <div class="col">
+          <%= f.label :city, "Город", class: "form-label" %>
+          <%= f.text_field :city, class: "form-control", placeholder: "Город" %>
+        </div>
+        <div class="col">
+          <%= f.label :street, "Улица", class: "form-label" %>
+          <%= f.text_field :street, class: "form-control", placeholder: "Улица" %>
+        </div>
+      </div>
+
+      <div class="row g-3">
+        <div class="col">
+          <%= f.label :house_no, "Дом №", class: "form-label" %>
+          <%= f.text_field :house_no, class: "form-control", placeholder: "Дом №" %>
+        </div>
+        <div class="col">
+          <%= f.label :apartment_no, "Квартира №", class: "form-label" %>
+          <%= f.text_field :apartment_no, class: "form-control", placeholder: "Квартира №" %>
+        </div>
+        <div class="col">
+          <%= f.label :number_owners, "Корпус", class: "form-label" %>
+          <%= f.text_field :number_owners, class: "form-control", placeholder: "Кол-во собственников" %>
+        </div>
+      </div>
+
+      <div class="row g-3">
+        <div class="col">
+          <%= f.label :phone, "Телефон", class: "form-label" %>
+          <%= f.text_field :phone, class: "form-control", placeholder: "Телефон", id: "phone" %>
+        </div>
+        <div class="col">
+          <%= f.label :email, "@email", class: "form-label" %>
+          <%= f.email_field :email, class: "form-control", placeholder: "@email", autofocus: true %>
+        </div>
+        <div class="col">
+          <%= f.label :serial_number, "Серийный №", class: "form-label" %>
+          <%= f.text_field :serial_number, class: "form-control", placeholder: "Серийный №" %>
+        </div>
+        <div class="col">
+          <%= f.label :contractor, "Подрядчик", class: "form-label" %>
+          <%= f.text_field :contractor, class: "form-control", placeholder: "Подрядчик" %>
+        </div>
+      </div>
+
+      <div class="row g-3">
+        <div class="col">
+          <%= f.label :home_activation_date, "Доступ", class: "form-label" %>
+          <%= f.date_field :home_activation_date, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-check form-switch mt-3">
+        <%= f.check_box :subscriber_blocking_date_enabled, class: "form-check-input", id: "blocking_date_toggle" %>
+        <%= f.label :subscriber_blocking_date_enabled, "Дата блокировки абонента", class: "form-check-label", for: "blocking_date_toggle" %>
+      </div>
+      <div id="blocking_date_field" class="mt-2" style="display: none;">
+        <%= f.date_field :subscriber_blocking_date, class: "form-control" %>
+      </div>
+
+      <div class="row g-3">
+        <div class="col">
+          <%= f.label :scans, "Документы", class: "form-label" %>
+          <%= f.file_field :scans, multiple: true, class: "btn btn-success btn-sm" %>
+        </div>
+      </div>
+
+      <div class="btn-group mt-3">
+        <%= f.submit "Добавить", class: "btn btn-success btn-sm", data: { turbolinks: false } %>
+        <%= link_to "Назад", register_of_owners_path, class: "btn btn-secondary btn-sm", data: { turbolinks: false } %>
+      </div>
+    <% end %>
   </small>
 </section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/inputmask/5.0.6/inputmask.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const phoneInput = document.getElementById('phone');
+    const mask = new Inputmask('+7 (999) 999-99-99');  // Маска для телефона с +7 на начале
+    mask.mask(phoneInput);
+  });
+</script>
