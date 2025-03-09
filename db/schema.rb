@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_29_130702) do
+ActiveRecord::Schema[7.0].define(version: 2025_03_09_150130) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,6 +22,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_29_130702) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "register_of_owners_id"
+    t.string "serial_number"
     t.index ["password"], name: "index_access_registries_on_password", unique: true
     t.index ["register_of_owners_id"], name: "index_access_registries_on_register_of_owners_id"
   end
@@ -60,6 +61,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_29_130702) do
     t.string "house_no", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "start_accrual_date"
     t.index ["city"], name: "index_register_of_documents_on_city"
     t.index ["house_no"], name: "index_register_of_documents_on_house_no"
     t.index ["street"], name: "index_register_of_documents_on_street"

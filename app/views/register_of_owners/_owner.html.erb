@@ -1,52 +1,75 @@
 <% register_of_owners.each do |owner| %>
-  <% access_registry_id = AccessRegistry.find_by(register_of_owners_id: owner.id) %>
-    <tr>
-      <% if owner.debtor == true %>
-        <th class="text-danger" scope="row"><%= owner.id %></th>
-        <td class="text-danger"><%= owner.first_name %></td>
-        <td class="text-danger"><%= link_to owner.last_name, edit_access_registry_path(owner.id) %></td>
-        <td class="text-danger"><%= owner.middle_name %></td>
-        <td class="text-danger"><%= owner.email %></td>
-        <td class="text-danger"><%= owner.city %></td>
-        <td class="text-danger"><%= owner.street %></td>
-        <td class="text-danger"><%= owner.house_no %></td>
-        <td class="text-danger"><%= owner.apartment_no %></td>
-        <td class="text-danger"><%= owner.number_owners %></td>
-        <td class="text-danger"><%= owner.phone %></td>
-        <time><td class="text-danger"><%= owner.subscriber_blocking_date&.to_date&.strftime("%d.%m.%y") %></td></time>
-        <time><td class="text-danger"><%= owner.home_activation_date&.to_date&.strftime("%d.%m.%y") %></td></time>
-        <td class="text-danger"><%= owner.serial_number %></td>
-        <td class="text-danger"><%= owner.contractor %></td>
-        <td class="text-danger"><%= owner.personal_account %></td>
-      <% else %>
-        <th class="text-center" scope="row"><%= owner.id %></th>
-        <td class="text-center"><%= owner.first_name %></td>
-        <td class="text-center"><%= link_to owner.last_name, edit_access_registry_path(owner.id) %></td>
-        <td class="text-center"><%= owner.middle_name %></td>
-        <td class="text-center"><%= owner.email %></td>
-        <td class="text-center"><%= owner.city %></td>
-        <td class="text-center"><%= owner.street %></td>
-        <td class="text-center"><%= owner.house_no %></td>
-        <td class="text-center"><%= owner.apartment_no %></td>
-        <td class="text-center"><%= owner.number_owners %></td>
-        <td class="text-center"><%= owner.phone %></td>
-        <time><td class="text-center"><%= owner.subscriber_blocking_date&.to_date&.strftime("%d.%m.%y") %></td></time>
-        <time><td class="text-center"><%= owner.home_activation_date&.to_date&.strftime("%d.%m.%y") %></td></time>
-        <td class="text-center"><%= owner.serial_number %></td>
-        <td class="text-center"><%= owner.contractor %></td>
-        <td class="text-center"><%= owner.personal_account %></td>
-      <% end %>
-      <td class="text-center"><%= owner.scans.each do |scan|
-        if scan.representable?
-            image_tag scan.representation(resize_to_limit: [100, 100])
-          end
-        end%>
-      </td>
-      <td class="text-center">
-        <%= link_to fa_icon('pencil'), edit_register_of_owner_path(owner), class: 'btn btn-info btn-sm' %>
-        <% unless action_name == 'import' %>
-          <%= link_to fa_icon('trash-o'), owner, data: { turbo_method: "delete", turbo_confirm: "Вы уверены?" }, class: 'btn btn-danger btn-sm' %>
+  <tr>
+    <% if owner.debtor == true %>
+      <th class="text-danger" scope="row"><%= owner.id %></th>
+      <td class="text-danger"><%= owner.first_name %></td>
+      <td class="text-danger"><%= owner.last_name %></td>
+      <td class="text-danger"><%= owner.middle_name %></td>
+      <td class="text-danger"><%= owner.email %></td>
+      <td class="text-danger"><%= owner.city %></td>
+      <td class="text-danger"><%= owner.street %></td>
+      <td class="text-danger"><%= owner.house_no %></td>
+      <td class="text-danger"><%= owner.apartment_no %></td>
+      <td class="text-danger"><%= owner.number_owners %></td>
+      <td class="text-danger"><%= owner.phone %></td>
+      <time><td class="text-danger"><%= owner.subscriber_blocking_date&.to_date&.strftime("%d.%m.%y") %></td></time>
+      <time><td class="text-danger"><%= owner.home_activation_date&.to_date&.strftime("%d.%m.%y") %></td></time>
+      <td class="text-danger"><%= owner.serial_number %></td>
+      <td class="text-danger"><%= owner.contractor %></td>
+      <td class="text-danger"><%= owner.personal_account %></td>
+    <% else %>
+      <th class="text-center" scope="row"><%= owner.id %></th>
+      <td class="text-center"><%= owner.first_name %></td>
+      <td class="text-center"><%= owner.last_name %></td>
+      <td class="text-center"><%= owner.middle_name %></td>
+      <td class="text-center"><%= owner.email %></td>
+      <td class="text-center"><%= owner.city %></td>
+      <td class="text-center"><%= owner.street %></td>
+      <td class="text-center"><%= owner.house_no %></td>
+      <td class="text-center"><%= owner.apartment_no %></td>
+      <td class="text-center"><%= owner.number_owners %></td>
+      <td class="text-center"><%= owner.phone %></td>
+      <time><td class="text-center"><%= owner.subscriber_blocking_date&.to_date&.strftime("%d.%m.%y") %></td></time>
+      <time><td class="text-center"><%= owner.home_activation_date&.to_date&.strftime("%d.%m.%y") %></td></time>
+      <td class="text-center"><%= owner.serial_number %></td>
+      <td class="text-center"><%= owner.contractor %></td>
+      <td class="text-center"><%= owner.personal_account %></td>
+    <% end %>
+
+    <!-- Отображение загруженных документов -->
+    <td class="text-center">
+      <% if owner.scans.any? %> <!-- Проверка, если есть прикрепленные файлы -->
+        <% owner.scans.each do |scan| %>
+          <% file_url = url_for(scan) %> <!-- Получение URL файла -->
+          <% if scan.content_type.in?(["image/jpeg", "image/jpg", "image/png", "image/gif", "image/bmp", "image/svg+xml"]) %>
+            <!-- Если это изображение -->
+            <%= image_tag file_url, size: "100x100", alt: "Документ" %>
+          <% elsif scan.content_type.in?(["application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"]) %>
+            <!-- Если это документ -->
+            <%= link_to "Скачать документ", file_url, target: "_blank", class: "btn btn-primary btn-sm" %>
+          <% else %>
+            <p>Неподдерживаемый формат файла</p>
+          <% end %>
         <% end %>
-      </td>
-    </tr>
+      <% else %>
+        <p>Файл не найден</p>
+      <% end %>
+
+      <!-- Форма загрузки файла -->
+      <%= form_with(model: owner, url: upload_scan_register_of_owner_path(owner), local: true, html: { multipart: true }) do |form| %>
+        <div class="form-group">
+          <%= form.label :scans, "Добавить" %>
+          <%= form.file_field :scans, multiple: true, class: "form-control" %>
+        </div>
+        <%= form.submit "Скачать", class: "btn btn-success btn-sm" %>
+      <% end %>
+    </td>
+
+    <td class="text-center">
+      <%= link_to fa_icon('pencil'), edit_register_of_owner_path(owner), class: 'btn btn-info btn-sm' %>
+      <% unless action_name == 'import' %>
+        <%= link_to fa_icon('trash-o'), owner, data: { turbo_method: "delete", turbo_confirm: "Вы уверены?" }, class: 'btn btn-danger btn-sm' %>
+      <% end %>
+    </td>
+  </tr>
 <% end %>

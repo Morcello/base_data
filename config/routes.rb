@@ -10,4 +10,10 @@ Rails.application.routes.draw do
   resources :access_registries
   resources :service_cancellations
   resources :register_of_documents
+
+  resources :register_of_owners do
+    member do
+      post 'upload_scan', to: 'register_of_owners#upload_scan'
+    end
+  end
 end
